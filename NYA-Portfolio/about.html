@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - NYA Creative Studios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Italiana&family=Pinyon+Script&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-accent: #544B3D;
+            --cream-bg: #fcfbf9; 
+            --beige-bg: #F9F8F4;
+            --text-dark: #1c1c1c;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream-bg);
+            color: var(--text-dark);
+        }
+        h1, h2, h3 {
+            font-family: 'Italiana', serif;
+        }
+        .nav-double-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            border-top: 1px solid rgba(197, 179, 88, 0.5);
+            border-bottom: 1px solid rgba(197, 179, 88, 0.5);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="absolute top-0 w-full z-50 nav-double-border transition-all duration-300" style="background-color: #1A1A1A;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-32">
+                <nav class="flex-1 flex justify-start space-x-8 md:space-x-12">
+                    <a href="index.html" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#544B3D] transition duration-300">Home</a>
+                    <a href="index.html#services" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#544B3D] transition duration-300">Services</a>
+                </nav>
+                <div class="flex-shrink-0 flex items-center justify-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="NCS_LOGO@2x.png" alt="NYA Creative Studios" class="h-24 w-auto filter brightness-0">
+                    </a>
+                </div>
+                <nav class="flex-1 flex justify-end space-x-8 md:space-x-12">
+                    <a href="portfolio.html" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#544B3D] transition duration-300">Portfolio</a>
+                    <a href="index.html#contact" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#544B3D] transition duration-300">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-40">
+        <section class="max-w-4xl mx-auto px-6 lg:px-8 py-20">
+            <h1 class="text-5xl md:text-6xl text-center mb-12 text-[#1c1c1c]">Meet Nottya</h1>
+            <div class="w-16 h-px bg-gray-300 mx-auto mb-12"></div>
+            <div class="prose prose-lg mx-auto text-gray-600 font-light leading-loose text-center">
+                <p>
+                    Hello! I am the creative force behind NYA Creative Studios. My journey into photography started with a simple desire to preserve the fleeting moments of life. Over the years, this passion has evolved into a dedicated pursuit of storytelling through visual art.
+                </p>
+                <p>
+                    I believe that every session is an opportunity to create something timeless. Whether it's the quiet intimacy of a newborn session or the grand celebration of a wedding day, I approach each shoot with the same level of care, artistry, and enthusiasm.
+                </p>
+                <p>
+                    When I'm not behind the camera, you can find me exploring the beautiful landscapes of Pennsylvania, enjoying a good cup of coffee, or planning my next creative project. I look forward to meeting you and telling your unique story.
+                </p>
+            </div>
+            <div class="mt-20 text-center">
+                <img src="https://placehold.co/800x500/e5e7eb/1f2937?text=Nottya+Lifestyle" alt="Nottya Lifestyle" class="mx-auto shadow-xl rounded-sm border border-white/50">
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white text-gray-400 py-12 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-[10px] tracking-[0.2em] uppercase">&copy; 2025 NYA Creative Studios.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

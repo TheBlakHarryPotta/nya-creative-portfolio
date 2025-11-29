@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYA Creative Studios Photography Portfolio</title>
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Italiana&family=Pinyon+Script&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- LUXURY COLOR PALETTE VARIABLES --- */
+        :root {
+            --primary-accent: #544B3D; 
+            --dark-bg: #1A1A1A; 
+            --cream-bg: #F9F8F4; 
+            --beige-bg: #F2EBE5;
+            --text-dark: #1C1C1C;
+            --gold-accent: #D4AF37;
+            --gold-shadow-light: #e6d89f;
+            --gold-shadow-dark: #a39143;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: var(--text-dark); margin: 0; padding: 0; }
+        
+        /* Typography */
+        h1, h2, h3, h4 { font-family: 'Italiana', serif; }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-cormorant { font-family: 'Cormorant Garamond', serif; }
+        .signature-font { font-family: 'Pinyon Script', cursive; }
+
+        /* Buttons */
+        .btn-luxury {
+            background-color: #000000; color: white; transition: all 0.4s ease; border: 1px solid #000000;
+        }
+        .btn-luxury:hover {
+            background-color: #000000; color: var(--gold-accent); border-color: var(--gold-accent); transform: translateY(-1px);
+        }
+        .btn-inquire {
+            background-color: #ffffff; color: var(--gold-accent); border: 1px solid #ffffff; transition: all 0.4s ease;
+        }
+        .btn-inquire:hover {
+            background-color: #000000; color: var(--gold-accent); border-color: var(--gold-accent); transform: translateY(-1px);
+        }
+
+        /* Borders */
+        .fancy-gold-border {
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5), inset 0 0 0 8px var(--gold-accent), 0 0 15px rgba(0,0,0,0.7), 0 0 0 2px #e6d89f, 0 0 0 12px var(--gold-accent), 0 0 0 14px #a39143, 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 2px; 
+        }
+        .thin-gold-border { border: 1px solid var(--gold-accent); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .section-double-border { position: relative; }
+        .section-double-border::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background-color: #C5B358; z-index: 30; pointer-events: none; }
+        .section-double-border::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background-color: #C5B358; z-index: 30; pointer-events: none; }
+        .nav-double-border { position: relative; }
+        .nav-double-border::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; border-top: 1px solid rgba(197, 179, 88, 0.5); border-bottom: 1px solid rgba(197, 179, 88, 0.5); }
+
+        /* Parallax */
+        .parallax-section { background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; height: 100vh; min-height: 600px; position: relative; z-index: 0; display: flex; align-items: center; justify-content: center; }
+        @media (hover: none) { .parallax-section { background-attachment: scroll; } }
+        .content-panel { position: relative; z-index: 10; width: 100%; }
+
+        /* Carousel & Film Strip */
+        #carousel-container::-webkit-scrollbar, .vertical-film-frame-container::-webkit-scrollbar, .film-frame-container::-webkit-scrollbar { display: none; }
+        .carousel-slide { flex: 0 0 auto; width: 85vw; max-width: 300px; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+        .carousel-image-container { width: 280px; height: 280px; border-radius: 50%; overflow: hidden; margin-top: 1.5rem; transition: transform 0.5s ease; border: 1px solid var(--gold-accent); }
+        .carousel-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .carousel-slide:hover .carousel-image-container { transform: translateY(-10px); box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15); }
+        .carousel-slide:hover .carousel-image { transform: scale(1.1); }
+
+        .vertical-film-strip-container { width: 100%; max-width: 400px; height: 600px; background-color: var(--dark-bg); position: relative; overflow: hidden; }
+        .vertical-film-strip-body { background-color: #ffffff; padding: 0 30px; position: relative; height: 100%; width: 100%; display: flex; justify-content: center; }
+        .vertical-film-sprockets-overlay { position: absolute; top: 0; height: 100%; width: 20px; background-image: linear-gradient(to bottom, #000000 60%, transparent 60%); background-size: 100% 30px; pointer-events: none; z-index: 20; }
+        .sprockets-left { left: 5px; } .sprockets-right { right: 5px; } 
+        .vertical-film-frame-container { display: flex; flex-direction: column; overflow-y: scroll; scroll-behavior: smooth; padding: 20px 0; height: 100%; background-color: #ffffff; }
+        .vertical-film-frame { flex: 0 0 auto; width: 100%; height: 235px; margin-bottom: 20px; background-color: #000; border: 1px solid #000; border-radius: 2px; display: block; overflow: hidden; }
+        .vertical-film-frame img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: all 0.5s ease; }
+        .vertical-film-frame:hover img { filter: grayscale(0%); }
+
+        .film-strip-section { background-color: var(--dark-bg); padding: 60px 0; position: relative; overflow: hidden; display: flex; justify-content: center; }
+        .film-strip-body { background-color: #ffffff; padding: 0; border-top: 30px solid #000000; border-bottom: 30px solid #000000; position: relative; width: 100%; display: flex; align-items: center; }
+        .film-sprockets-overlay { position: absolute; left: 0; width: 100%; height: 18px; background-image: linear-gradient(to right, #ffffff 55%, transparent 55%); background-size: 28px 100%; pointer-events: none; z-index: 20; }
+        .sprockets-top { top: -24px; } .sprockets-bottom { bottom: -24px; } 
+        .film-frame-container { display: flex; overflow-x: scroll; scroll-behavior: smooth; padding: 15px 20px; width: 100%; background-color: #000; }
+        .film-frame { flex: 0 0 auto; width: 350px; min-width: 350px; height: 235px; margin-right: 15px; background-color: #000; border: 1px solid #000; border-radius: 2px; display: block; overflow: hidden; }
+        .film-frame img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: all 0.5s ease; }
+        .film-frame:hover img { filter: grayscale(0%); }
+
+        /* Modal */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(26, 26, 26, 0.98); justify-content: center; align-items: center; }
+        .modal-content { margin: auto; display: block; max-width: 90%; max-height: 85vh; border-radius: 1px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        #modal-caption { margin: auto; display: block; width: 80%; max-width: 700px; text-align: center; color: #e5e5e5; padding: 20px 0; font-family: 'Italiana', serif; font-size: 1.1rem; letter-spacing: 1px; }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: #f1f1f1; font-size: 40px; cursor: pointer; z-index: 2010; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="relative top-0 w-full z-50 nav-double-border transition-all duration-300" style="background-color: #1A1A1A;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-32">
+                <nav class="flex-1 flex justify-start space-x-8 md:space-x-12">
+                    <a href="about.html" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#C5B358] transition duration-300">About</a>
+                    <a href="#services" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#C5B358] transition duration-300">Services</a>
+                </nav>
+                <div class="flex-shrink-0 flex items-center justify-center">
+                    <a href="#" class="flex items-center">
+                        <img src="NCS_LOGO@2x.png" alt="NYA Creative Studios" class="h-24 w-auto">
+                    </a>
+                </div>
+                <nav class="flex-1 flex justify-end space-x-8 md:space-x-12">
+                    <a href="portfolio.html" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#C5B358] transition duration-300">Portfolio</a>
+                    <a href="#contact" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#C5B358] transition duration-300">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- 1. Hero -->
+        <section class="parallax-section section-double-border" style="background-image: url('EngagementShoot1-30.jpg');">
+            <div class="absolute inset-0 bg-black/40"></div> 
+            <div class="absolute bottom-10 left-4 md:left-8 z-20 hidden md:block">
+                <p class="text-white text-[11px] uppercase tracking-widest font-medium opacity-90">Photography, Brand Visuals & Digital Strategy (WORLDWIDE)</p>
+            </div>
+            <div class="absolute bottom-10 right-10 md:right-16 z-20 flex items-center space-x-6">
+                <span class="signature-font text-6xl transform translate-y-3 opacity-100 mr-4" style="color: #D4AF37; text-shadow: 1px 1px 0 #000;">Nottya LLC</span>
+                <a href="#contact" class="inline-block btn-inquire px-8 py-3 text-[11px] uppercase tracking-[0.15em]">Inquire Now</a>
+            </div>
+        </section>
+
+        <!-- 2. Philosophy (Vertical Film Strip) -->
+        <section class="content-panel section-double-border py-32 md:py-40" style="background-color: var(--cream-bg);">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+                    <div class="flex justify-center md:justify-start">
+                        <div class="vertical-film-strip-container thin-gold-border">
+                            <div class="vertical-film-strip-body">
+                                <div class="vertical-film-sprockets-overlay sprockets-left"></div>
+                                <div class="vertical-film-frame-container snap-y snap-mandatory">
+                                    <a href="portfolio.html" class="vertical-film-frame snap-center">
+                                        <!-- Wedding Moment -->
+                                        <img src="Wedding2025-34.jpg" alt="Wedding Moment">
+                                    </a>
+                                    <a href="portfolio.html" class="vertical-film-frame snap-center">
+                                        <!-- UPDATED: Editorial Shot with adjusted position -->
+                                        <img src="Wedding2025-11.jpg" alt="Editorial Shot" style="object-position: top;">
+                                    </a>
+                                    <a href="portfolio.html" class="vertical-film-frame snap-center">
+                                        <!-- UPDATED: Candid Emotion with new image -->
+                                        <img src="Wedding2025-46.jpg" alt="Candid Emotion">
+                                    </a>
+                                    <a href="portfolio.html" class="vertical-film-frame snap-center">
+                                        <!-- Detail Shot -->
+                                        <img src="Wedding2025-52.jpg" alt="Detail Shot">
+                                    </a>
+                                    <div class="h-5 flex-shrink-0"></div>
+                                </div>
+                                <div class="vertical-film-sprockets-overlay sprockets-right"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left md:pl-8">
+                        <h2 class="text-3xl md:text-4xl text-[#1c1c1c] leading-tight mb-10 font-normal uppercase tracking-wide">The Beginning of <br>Your Story Preserved <br>For Generations</h2>
+                        <div class="w-full h-px bg-gray-300 mb-10"></div>
+                        <p class="text-gray-600 leading-loose mb-12 font-light text-lg tracking-wide">It's in the unspoken glances, the little moments, the natural rhythm of life—I'm drawn to the beauty that unfolds effortlessly.</p>
+                        <a href="#contact" class="inline-block btn-luxury px-10 py-4 text-[11px] uppercase tracking-[0.25em]">I'd Love To Capture Your Wedding</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Parallax Break -->
+        <section class="parallax-section section-double-border" style="background-image: url('https://placehold.co/1920x1080/2f3e46/ffffff?text=Nature+Break+1');">
+             <div class="absolute inset-0 bg-black/20"></div>
+        </section>
+
+        <!-- 4. About (Single Picture + Fancy Frame) -->
+        <section id="about" class="content-panel section-double-border py-32 md:py-40" style="background-color: var(--beige-bg);">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+                    <div class="flex justify-center md:justify-end order-1">
+                        <div class="w-full max-w-[500px] h-[650px] bg-[#D3D3D3] fancy-gold-border flex items-center justify-center">
+                            <span class="text-gray-500 text-sm uppercase tracking-widest">[ Insert Portrait Here ]</span>
+                        </div>
+                    </div>
+                    <div class="order-2 md:pl-8 text-center md:text-left">
+                        <h2 class="text-4xl md:text-5xl text-[#1c1c1c] mb-10 font-normal uppercase leading-snug tracking-wide">We're Not Just Here To Take Pretty Pictures—<br>Though You'll Get Plenty Of Those.</h2>
+                        <p class="text-gray-600 leading-loose mb-8 font-light text-lg tracking-wide">For us, photography is about capturing the real stuff: the big feelings, the quiet moments, and all the in-between magic that makes your story yours.</p>
+                        <div class="mt-8">
+                            <a href="about.html" class="inline-block btn-luxury px-10 py-4 text-[11px] uppercase tracking-[0.25em] relative z-20">Get to Know Nottya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Parallax Break -->
+        <section class="parallax-section section-double-border" style="background-image: url('https://placehold.co/1920x1080/52796f/ffffff?text=Nature+Break+2');">
+             <div class="absolute inset-0 bg-black/20"></div>
+        </section>
+
+        <!-- 6. Offerings -->
+        <section id="services" class="content-panel section-double-border py-32 md:py-40" style="background-color: var(--dark-bg);">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <span class="text-xs font-bold tracking-[0.3em] text-[#C5B358] uppercase mb-4 block">Offerings</span>
+                    <h2 class="text-4xl md:text-5xl text-white font-normal tracking-wide uppercase">Capturing Every Moment</h2>
+                </div>
+                <div class="relative">
+                    <div id="carousel-container" class="flex overflow-x-scroll snap-x snap-mandatory space-x-8 p-8 -mx-4 scroll-smooth items-start pb-16">
+                        <div class="carousel-slide group snap-center" onclick="openModal('https://placehold.co/800x800/d946ef/ffffff?text=Weddings', 'Weddings')">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Weddings & Engagements</h3>
+                            <div class="carousel-image-container">
+                                <img class="carousel-image" src="Wedding2025-82.jpg" alt="Weddings" style="object-position: 50% 25%;">
+                            </div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="openModal('https://placehold.co/800x800/fbcfe8/ffffff?text=Maternity', 'Maternity')">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Maternity, Newborn & Toddlers</h3>
+                            <div class="carousel-image-container">
+                                <img class="carousel-image" src="NewbornSession-7.jpg" alt="Maternity">
+                            </div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="openModal('https://placehold.co/800x800/bae6fd/ffffff?text=Family', 'Family')">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Family</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="Family Session 2025-19.jpg" alt="Family"></div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="openModal('https://placehold.co/800x800/bbf7d0/ffffff?text=School', 'School')">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">School & Yearbook</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="QV2025 2.jpg" alt="School"></div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="openModal('https://placehold.co/800x800/fde047/ffffff?text=Seniors', 'Seniors')">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Seniors & Graduation</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="SeniorPics2025-27.jpg" alt="Seniors"></div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="openModal('https://placehold.co/800x800/cbd5e1/ffffff?text=Headshots', 'Headshots')">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Headshots</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="QV2025-22-cleanedup.jpg" alt="Headshots"></div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="openModal('https://placehold.co/800x800/fdba74/ffffff?text=Branding', 'Branding')">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Branding</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="40thBday-17.jpg" alt="Branding"></div>
+                        </div>
+                    </div>
+                    <button id="prev-btn" class="absolute left-8 top-1/2 transform -translate-y-1/2 bg-white/90 p-4 rounded-full shadow-xl hover:bg-black hover:text-white transition duration-300 z-30 hidden md:block"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path></svg></button>
+                    <button id="next-btn" class="absolute right-8 top-1/2 transform -translate-y-1/2 bg-white/90 p-4 rounded-full shadow-xl hover:bg-black hover:text-white transition duration-300 z-30 hidden md:block"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path></svg></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Film Strip -->
+        <section id="film-strip" class="film-strip-section section-double-border">
+            <div class="film-strip-body">
+                <div class="film-sprockets-overlay sprockets-top"></div>
+                <div id="film-carousel" class="film-frame-container snap-x snap-mandatory">
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="https://placehold.co/700x470/2a2a2a/ffffff?text=Wedding+Moment" alt="1"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="https://placehold.co/700x470/333333/ffffff?text=Editorial" alt="2"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="https://placehold.co/700x470/1f1f1f/ffffff?text=Candid" alt="3"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="https://placehold.co/700x470/252525/ffffff?text=Detail" alt="4"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="https://placehold.co/700x470/1a1a1a/ffffff?text=Portrait" alt="5"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="https://placehold.co/700x470/2e2e2e/ffffff?text=Reception" alt="6"></a>
+                    <div class="w-5 flex-shrink-0"></div>
+                </div>
+                <div class="film-sprockets-overlay sprockets-bottom"></div>
+            </div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-0 hover:opacity-100 transition duration-500 z-30">
+                <span class="text-[#C5B358] font-cinzel text-2xl tracking-widest bg-black/80 px-6 py-3 border border-[#C5B358]">View Full Portfolio</span>
+            </div>
+        </section>
+
+        <!-- 7.5 Reviews -->
+        <section id="reviews" class="content-panel section-double-border py-32 md:py-40" style="background-color: #F4F1EA;">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="flex flex-col lg:flex-row gap-16 items-center">
+                    <div class="w-full lg:w-2/3 text-center lg:text-left">
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl text-[#1c1c1c] font-cormorant font-normal uppercase leading-tight tracking-wide mb-8">
+                            "Our family and bridal party continue to comment on how <span class="italic">fun and efficient he was.</span>"
+                        </h2>
+                    </div>
+                    <div class="w-full lg:w-1/3 flex flex-col items-center lg:items-end text-center lg:text-right">
+                        <p class="text-gray-600 leading-loose mb-8 font-light text-sm md:text-base max-w-md">
+                            The photos themselves are breathtaking, to say the least. I wish I could give him 10/5 stars.
+                        </p>
+                        <div class="w-full max-w-[300px] aspect-[3/4] relative mb-8 group cursor-pointer">
+                            <div class="absolute inset-0 border border-[#C5B358] translate-x-2 translate-y-2 transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1"></div>
+                            <img src="https://placehold.co/400x533/e5e0d8/555555?text=Client+Photo" alt="Client" class="w-full h-full object-cover relative z-10 shadow-lg">
+                        </div>
+                        <div class="flex space-x-8 text-[#1c1c1c]">
+                            <button class="hover:text-[#C5B358] transition text-2xl">←</button>
+                            <button class="hover:text-[#C5B358] transition text-2xl">→</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Contact -->
+        <section id="contact" class="content-panel section-double-border py-32 md:py-40" style="background-color: var(--dark-bg); color: white;">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl md:text-5xl mb-8 uppercase tracking-wide">Let's Create Together</h2>
+                <div class="w-16 h-px bg-[#C5B358] mx-auto mb-12"></div>
+                <p class="text-xl text-gray-400 font-light mb-12 leading-relaxed">Available for commissions worldwide.</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="mailto:hello@stellarlens.com" class="inline-flex justify-center items-center px-10 py-4 border border-[#C5B358] bg-[#C5B358] text-[#1A1A1A] text-[11px] font-medium hover:bg-transparent hover:text-[#C5B358] transition duration-300 uppercase tracking-[0.25em]">Send an Email</a>
+                    <a href="tel:+15551234567" class="inline-flex justify-center items-center px-10 py-4 border border-gray-700 bg-transparent text-[11px] font-medium text-gray-400 hover:border-[#C5B358] hover:text-[#C5B358] transition duration-300 uppercase tracking-[0.25em]">(555) 123-4567</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-gray-500 py-12 section-double-border relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-[10px] tracking-[0.2em] uppercase mb-8 md:mb-0">&copy; 2025 NYA Creative Studios</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-4 text-[10px] tracking-[0.2em] uppercase text-center md:text-right">
+                <a href="#" class="hover:text-[#C5B358] transition">Instagram</a>
+                <a href="#" class="hover:text-[#C5B358] transition">Facebook</a>
+                <a href="#" class="hover:text-[#C5B358] transition">Pinterest</a>
+                <a href="#" class="hover:text-[#C5B358] transition">X (Twitter)</a>
+                <a href="#" class="hover:text-[#C5B358] transition">TikTok</a>
+                <a href="#" class="hover:text-[#C5B358] transition">NYA's Blog</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal & JS -->
+    <div id="image-modal" class="modal" onclick="closeModal()"><span class="close-btn">&times;</span><img class="modal-content" id="modal-image"><div id="modal-caption"></div></div>
+    <script>
+        const modal = document.getElementById("image-modal"), modalImg = document.getElementById("modal-image"), captionText = document.getElementById("modal-caption");
+        function openModal(src, caption) { event.stopPropagation(); modal.style.display = "flex"; modalImg.src = src; captionText.innerHTML = caption; document.body.style.overflow = 'hidden'; }
+        function closeModal() { modal.style.display = "none"; document.body.style.overflow = 'auto'; }
+        document.addEventListener('keydown', e => { if (e.key === "Escape" && modal.style.display === "flex") closeModal(); });
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('carousel-container');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            if (container) {
+                const scrollCarousel = (direction) => {
+                    const slideWidth = container.querySelector('.carousel-slide').offsetWidth;
+                    const scrollAmount = slideWidth + 32;
+                    container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+                };
+                prevBtn.addEventListener('click', () => scrollCarousel(-1));
+                nextBtn.addEventListener('click', () => scrollCarousel(1));
+            }
+            const filmContainer = document.getElementById('film-carousel');
+            let isDown = false, startX, scrollLeft;
+            if(filmContainer) {
+                filmContainer.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - filmContainer.offsetLeft; scrollLeft = filmContainer.scrollLeft; });
+                filmContainer.addEventListener('mouseleave', () => isDown = false);
+                filmContainer.addEventListener('mouseup', () => isDown = false);
+                filmContainer.addEventListener('mousemove', e => { if(!isDown) return; e.preventDefault(); const x = e.pageX - filmContainer.offsetLeft; const walk = (x - startX) * 2; filmContainer.scrollLeft = scrollLeft - walk; });
+            }
+        });
+    </script>
+</body>
+</html>
