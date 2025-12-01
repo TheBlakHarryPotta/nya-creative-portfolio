@@ -296,7 +296,72 @@
                 </div>
             </div>
         </section>
+<section class="py-20 px-4 section-double-border" style="background-color: #0d0d0d; color: white;">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-cinzel uppercase tracking-widest mb-12">NYA Studio Opening</h2>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-12 text-[#1c1c1c]">
+                    <div class="flex flex-col items-center">
+                        <div class="bg-zinc-800 rounded-lg shadow-lg w-full max-w-[140px] aspect-square flex items-center justify-center border-b-4 border-[#C5B358] relative overflow-hidden">
+                             <div class="absolute inset-x-0 top-1/2 h-px bg-[#000000] opacity-30"></div>
+                            <span id="cd-days" class="font-mono text-5xl md:text-7xl font-bold text-white">00</span>
+                        </div>
+                        <p class="text-[#C5B358] text-xs uppercase tracking-[0.2em] mt-4">Days</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="bg-zinc-800 rounded-lg shadow-lg w-full max-w-[140px] aspect-square flex items-center justify-center border-b-4 border-[#C5B358] relative overflow-hidden">
+                            <div class="absolute inset-x-0 top-1/2 h-px bg-[#000000] opacity-30"></div>
+                            <span id="cd-hours" class="font-mono text-5xl md:text-7xl font-bold text-white">00</span>
+                        </div>
+                        <p class="text-[#C5B358] text-xs uppercase tracking-[0.2em] mt-4">Hours</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="bg-zinc-800 rounded-lg shadow-lg w-full max-w-[140px] aspect-square flex items-center justify-center border-b-4 border-[#C5B358] relative overflow-hidden">
+                            <div class="absolute inset-x-0 top-1/2 h-px bg-[#000000] opacity-30"></div>
+                            <span id="cd-minutes" class="font-mono text-5xl md:text-7xl font-bold text-white">00</span>
+                        </div>
+                        <p class="text-[#C5B358] text-xs uppercase tracking-[0.2em] mt-4">Minutes</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="bg-zinc-800 rounded-lg shadow-lg w-full max-w-[140px] aspect-square flex items-center justify-center border-b-4 border-[#C5B358] relative overflow-hidden">
+                            <div class="absolute inset-x-0 top-1/2 h-px bg-[#000000] opacity-30"></div>
+                            <span id="cd-seconds" class="font-mono text-5xl md:text-7xl font-bold text-white">00</span>
+                        </div>
+                        <p class="text-[#C5B358] text-xs uppercase tracking-[0.2em] mt-4">Seconds</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-400 font-light text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+                    A new creative space for portraits, branding, and artistic vision is coming to Pennsylvania. Get ready to experience NYA Creative Studios in person.
+                </p>
+            </div>
+        </section>
 
+        <script>
+            // Set the date we're counting down to
+            const countDownDate = new Date("Jan 1, 2026 00:00:00").getTime();
+
+            // Update the count down every 1 second
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countDownDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("cd-days").innerHTML = days.toString().padStart(2, '0');
+                document.getElementById("cd-hours").innerHTML = hours.toString().padStart(2, '0');
+                document.getElementById("cd-minutes").innerHTML = minutes.toString().padStart(2, '0');
+                document.getElementById("cd-seconds").innerHTML = seconds.toString().padStart(2, '0');
+
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("countdown-timer").innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        </script>
         <!-- 8. Contact -->
         <section id="contact" class="content-panel section-double-border py-32 md:py-40" style="background-color: var(--dark-bg); color: white;">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
