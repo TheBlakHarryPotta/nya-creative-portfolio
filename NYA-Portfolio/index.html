@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NYA Creative Studios Photography Portfolio</title>
+    <title>NYA Creative Studios - Photography & Branding</title>
     
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Load Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Italiana&family=Pinyon+Script&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* --- LUXURY COLOR PALETTE VARIABLES --- */
+        /* --- LUXURY COLOR PALETTE --- */
         :root {
             --primary-accent: #544B3D; 
             --dark-bg: #1A1A1A; 
@@ -20,8 +18,6 @@
             --beige-bg: #F2EBE5;
             --text-dark: #1C1C1C;
             --gold-accent: #D4AF37;
-            --gold-shadow-light: #e6d89f;
-            --gold-shadow-dark: #a39143;
         }
 
         html { scroll-behavior: smooth; }
@@ -64,14 +60,18 @@
         @media (hover: none) { .parallax-section { background-attachment: scroll; } }
         .content-panel { position: relative; z-index: 10; width: 100%; }
 
-        /* Carousel & Film Strip */
+        /* CAROUSEL STYLES (HOME PAGE - LARGE) */
         #carousel-container::-webkit-scrollbar, .vertical-film-frame-container::-webkit-scrollbar, .film-frame-container::-webkit-scrollbar { display: none; }
         .carousel-slide { flex: 0 0 auto; width: 85vw; max-width: 300px; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+        
+        /* THIS IS THE KEY PART FOR SIZE */
         .carousel-image-container { width: 280px; height: 280px; border-radius: 50%; overflow: hidden; margin-top: 1.5rem; transition: transform 0.5s ease; border: 1px solid var(--gold-accent); }
+        
         .carousel-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
         .carousel-slide:hover .carousel-image-container { transform: translateY(-10px); box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15); }
         .carousel-slide:hover .carousel-image { transform: scale(1.1); }
 
+        /* Film Strips */
         .vertical-film-strip-container { width: 100%; max-width: 400px; height: 600px; background-color: var(--dark-bg); position: relative; overflow: hidden; }
         .vertical-film-strip-body { background-color: #ffffff; padding: 0 30px; position: relative; height: 100%; width: 100%; display: flex; justify-content: center; }
         .vertical-film-sprockets-overlay { position: absolute; top: 0; height: 100%; width: 20px; background-image: linear-gradient(to bottom, #000000 60%, transparent 60%); background-size: 100% 30px; pointer-events: none; z-index: 20; }
@@ -107,7 +107,7 @@
                     <a href="#services" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#C5B358] transition duration-300">Services</a>
                 </nav>
                 <div class="flex-shrink-0 flex items-center justify-center">
-                    <a href="#" class="flex items-center">
+                    <a href="index.html" class="flex items-center">
                         <img src="NCS_LOGO@2x.png" alt="NYA Creative Studios" class="h-24 w-auto">
                     </a>
                 </div>
@@ -120,8 +120,7 @@
     </header>
 
     <main class="flex-grow">
-        <!-- 1. Hero -->
-        <section class="parallax-section section-double-border" style="background-image: url('EngagementShoot1-30.jpg');">
+        <section class="parallax-section section-double-border" style="background-image: url('EngagementShoot1-33_websize.jpg');">
             <div class="absolute inset-0 bg-black/40"></div> 
             <div class="absolute bottom-10 left-4 md:left-8 z-20 hidden md:block">
                 <p class="text-white text-[11px] uppercase tracking-widest font-medium opacity-90">Photography, Brand Visuals & Digital Strategy (WORLDWIDE)</p>
@@ -132,7 +131,6 @@
             </div>
         </section>
 
-        <!-- 2. Philosophy (Vertical Film Strip) -->
         <section class="content-panel section-double-border py-32 md:py-40" style="background-color: var(--cream-bg);">
             <div class="max-w-7xl mx-auto px-6 lg:px-12">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
@@ -142,20 +140,16 @@
                                 <div class="vertical-film-sprockets-overlay sprockets-left"></div>
                                 <div class="vertical-film-frame-container snap-y snap-mandatory">
                                     <a href="portfolio.html" class="vertical-film-frame snap-center">
-                                        <!-- Wedding Moment -->
-                                        <img src="Wedding2025-34.jpg" alt="Wedding Moment">
+                                        <img src="Wedding2025-35_websize.jpg" alt="Wedding Moment">
                                     </a>
                                     <a href="portfolio.html" class="vertical-film-frame snap-center">
-                                        <!-- UPDATED: Editorial Shot with adjusted position -->
-                                        <img src="Wedding2025-11.jpg" alt="Editorial Shot" style="object-position: top;">
+                                        <img src="Wedding2025-82_websize.jpg" alt="Editorial Shot" style="object-position: top;">
                                     </a>
                                     <a href="portfolio.html" class="vertical-film-frame snap-center">
-                                        <!-- UPDATED: Candid Emotion with new image -->
-                                        <img src="Wedding2025-46.jpg" alt="Candid Emotion">
+                                        <img src="EngagementShoot1-33_websize.jpg" alt="Candid Emotion">
                                     </a>
                                     <a href="portfolio.html" class="vertical-film-frame snap-center">
-                                        <!-- Detail Shot -->
-                                        <img src="Wedding2025-52.jpg" alt="Detail Shot">
+                                        <img src="Wedding2025-48_websize.jpg" alt="Detail Shot">
                                     </a>
                                     <div class="h-5 flex-shrink-0"></div>
                                 </div>
@@ -173,18 +167,16 @@
             </div>
         </section>
 
-        <!-- 3. Parallax Break -->
-       <section class="parallax-section section-double-border" style="background-image: url('leafkiss.jpg');">
+        <section class="parallax-section section-double-border" style="background-image: url('EngagementShoot1-20_websize.jpg');">
              <div class="absolute inset-0 bg-black/20"></div>
         </section>
 
-        <!-- 4. About (Single Picture + Fancy Frame) -->
         <section id="about" class="content-panel section-double-border py-32 md:py-40" style="background-color: var(--beige-bg);">
             <div class="max-w-7xl mx-auto px-6 lg:px-12">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
                     <div class="flex justify-center md:justify-end order-1">
-                        <div class="w-full max-w-[500px] h-[650px] bg-[#D3D3D3] fancy-gold-border flex items-center justify-center">
-                            <span class="text-gray-500 text-sm uppercase tracking-widest">[ Insert Portrait Here ]</span>
+                        <div class="w-full max-w-[500px] h-[650px] bg-[#D3D3D3] fancy-gold-border flex items-center justify-center overflow-hidden">
+                             <img src="40thBday-23_websize.jpg" class="w-full h-full object-cover">
                         </div>
                     </div>
                     <div class="order-2 md:pl-8 text-center md:text-left">
@@ -198,30 +190,63 @@
             </div>
         </section>
 
-        <!-- 5. Parallax Break -->
-        <section class="parallax-section section-double-border" style="background-image: url('weddingkiss.jpg');">
+        <section class="parallax-section section-double-border" style="background-image: url('Wedding2025-12_websize.jpg');">
              <div class="absolute inset-0 bg-black/20"></div>
         </section>
 
-        <!-- 6. Offerings -->
-        <div class="carousel-slide group snap-center" onclick="openModal('https://placehold.co/800x800/bbf7d0/ffffff?text=School', 'School')">
-    <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">School & Sports</h3>
-    <div class="carousel-image-container">
-        <img class="carousel-image" src="QuakerValleyHighSchoolFootball-206_websize.jpg" alt="School and Sports">
-    </div>
-</div>
+        <section id="services" class="content-panel section-double-border py-32 md:py-40" style="background-color: var(--dark-bg);">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <span class="text-xs font-bold tracking-[0.3em] text-[#C5B358] uppercase mb-4 block">Offerings</span>
+                    <h2 class="text-4xl md:text-5xl text-white font-normal tracking-wide uppercase">Capturing Every Moment</h2>
+                </div>
+                <div class="relative">
+                    <div id="carousel-container" class="flex overflow-x-scroll snap-x snap-mandatory space-x-8 p-8 -mx-4 scroll-smooth items-start pb-16">
+                        <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Weddings & Engagements</h3>
+                            <div class="carousel-image-container">
+                                <img class="carousel-image" src="Wedding2025-82_websize.jpg" alt="Weddings" style="object-position: 50% 25%;">
+                            </div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Maternity & Newborn</h3>
+                            <div class="carousel-image-container">
+                                <img class="carousel-image" src="Newborn2025-24_websize.jpg" alt="Maternity">
+                            </div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Family</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="Shyanne's Session-33_websize.jpg" alt="Family"></div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">School & Sports</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="QuakerValleyHighSchoolFootball-206_websize.jpg" alt="School"></div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Seniors & Graduation</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="SeniorPics2025-27_websize.jpg" alt="Seniors"></div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Branding</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="40thBday-23_websize.jpg" alt="Branding"></div>
+                        </div>
+                    </div>
+                    <button id="prev-btn" class="absolute left-8 top-1/2 transform -translate-y-1/2 bg-white/90 p-4 rounded-full shadow-xl hover:bg-black hover:text-white transition duration-300 z-30 hidden md:block"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path></svg></button>
+                    <button id="next-btn" class="absolute right-8 top-1/2 transform -translate-y-1/2 bg-white/90 p-4 rounded-full shadow-xl hover:bg-black hover:text-white transition duration-300 z-30 hidden md:block"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path></svg></button>
+                </div>
+            </div>
+        </section>
 
-        <!-- 7. Film Strip -->
         <section id="film-strip" class="film-strip-section section-double-border">
             <div class="film-strip-body">
                 <div class="film-sprockets-overlay sprockets-top"></div>
                 <div id="film-carousel" class="film-frame-container snap-x snap-mandatory">
-                    <a href="portfolio.html" class="film-frame snap-center"><img src="wedding.jpg" alt="Wedding Couple"></a>
-                    <a href="portfolio.html" class="film-frame snap-center"><img src="engagement.jpg" alt="Engagement Detail"></a>
-                    <a href="portfolio.html" class="film-frame snap-center"><img src="maternity.jpg" alt="Maternity Fun"></a>
-                    <a href="portfolio.html" class="film-frame snap-center"><img src="treefarm.jpg" alt="Family Tree Farm"></a>
-                    <a href="portfolio.html" class="film-frame snap-center"><img src="grayce.jpg" alt="Senior Portrait"></a>
-                    <a href="portfolio.html" class="film-frame snap-center"><img src="cheerleaders.jpg" alt="Cheerleaders"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="Wedding2025-78_websize.jpg" alt="Wedding Couple"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="EngagementShoot1-33_websize.jpg" alt="Engagement Detail"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="Maternity Session 2025-11_websize.jpg" alt="Maternity Fun"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="Shyanne's Session-33_websize.jpg" alt="Family Tree Farm"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="SeniorPics2025-73_websize.jpg" alt="Senior Portrait"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="QuakerValleyHighSchoolFootball-277_websize.jpg" alt="Sports"></a>
                     
                     <div class="w-5 flex-shrink-0"></div>
                 </div>
@@ -232,7 +257,6 @@
             </div>
         </section>
 
-        <!-- 7.5 Reviews -->
         <section id="reviews" class="content-panel section-double-border py-32 md:py-40" style="background-color: #F4F1EA;">
             <div class="max-w-7xl mx-auto px-6 lg:px-12">
                 <div class="flex flex-col lg:flex-row gap-16 items-center">
@@ -247,7 +271,7 @@
                         </p>
                         <div class="w-full max-w-[300px] aspect-[3/4] relative mb-8 group cursor-pointer">
                             <div class="absolute inset-0 border border-[#C5B358] translate-x-2 translate-y-2 transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1"></div>
-                            <img src="https://placehold.co/400x533/e5e0d8/555555?text=Client+Photo" alt="Client" class="w-full h-full object-cover relative z-10 shadow-lg">
+                            <img src="EngagementShoot1-31_websize.jpg" alt="Client" class="w-full h-full object-cover relative z-10 shadow-lg">
                         </div>
                         <div class="flex space-x-8 text-[#1c1c1c]">
                             <button class="hover:text-[#C5B358] transition text-2xl">←</button>
@@ -258,7 +282,6 @@
             </div>
         </section>
 
-        <!-- 8. Contact -->
         <section id="contact" class="content-panel section-double-border py-32 md:py-40" style="background-color: var(--dark-bg); color: white;">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-4xl md:text-5xl mb-8 uppercase tracking-wide">Let's Create Together</h2>
@@ -272,7 +295,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-black text-gray-500 py-12 section-double-border relative z-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <p class="text-[10px] tracking-[0.2em] uppercase mb-8 md:mb-0">&copy; 2025 NYA Creative Studios</p>
@@ -287,7 +309,6 @@
         </div>
     </footer>
 
-    <!-- Modal & JS -->
     <div id="image-modal" class="modal" onclick="closeModal()"><span class="close-btn">&times;</span><img class="modal-content" id="modal-image"><div id="modal-caption"></div></div>
     <script>
         const modal = document.getElementById("image-modal"), modalImg = document.getElementById("modal-image"), captionText = document.getElementById("modal-caption");
