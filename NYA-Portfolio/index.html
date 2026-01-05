@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Italiana&family=Pinyon+Script&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-accent: #544B3D; --dark-bg: #1A1A1A; --cream-bg: #F9F8F4; --gold-accent: #D4AF37; }
+        :root { --primary-accent: #544B3D; --dark-bg: #1A1A1A; --cream-bg: #F9F8F4; --beige-bg: #F2EBE5; --text-dark: #1C1C1C; --gold-accent: #D4AF37; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1C1C1C; margin: 0; padding: 0; }
         h1, h2, h3, h4 { font-family: 'Italiana', serif; }
@@ -53,6 +53,11 @@
         .film-frame { flex: 0 0 auto; width: 350px; min-width: 350px; height: 235px; margin-right: 15px; background-color: #000; border: 1px solid #000; border-radius: 2px; display: block; overflow: hidden; }
         .film-frame img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: all 0.5s ease; }
         .film-frame:hover img { filter: grayscale(0%); }
+
+        /* Modal */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(26, 26, 26, 0.98); justify-content: center; align-items: center; }
+        .modal-content { margin: auto; display: block; max-width: 90%; max-height: 85vh; border-radius: 1px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: #f1f1f1; font-size: 40px; cursor: pointer; z-index: 2010; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -95,10 +100,10 @@
                             <div class="vertical-film-strip-body">
                                 <div class="vertical-film-sprockets-overlay sprockets-left"></div>
                                 <div class="vertical-film-frame-container snap-y snap-mandatory">
-                                    <a href="portfolio.html" class="vertical-film-frame snap-center"><img src="Wedding2025-34.jpg" alt="Wedding"></a>
-                                    <a href="portfolio.html" class="vertical-film-frame snap-center"><img src="Wedding2025-11.jpg" alt="Editorial" style="object-position: top;"></a>
-                                    <a href="portfolio.html" class="vertical-film-frame snap-center"><img src="Wedding2025-46.jpg" alt="Emotion"></a>
-                                    <a href="portfolio.html" class="vertical-film-frame snap-center"><img src="Wedding2025-52.jpg" alt="Detail"></a>
+                                    <a href="portfolio.html" class="vertical-film-frame snap-center"><img src="Wedding2025-34_websize.jpg" alt="Wedding"></a>
+                                    <a href="portfolio.html" class="vertical-film-frame snap-center"><img src="Wedding2025-11_websize.jpg" alt="Editorial" style="object-position: top;"></a>
+                                    <a href="portfolio.html" class="vertical-film-frame snap-center"><img src="Wedding2025-46_websize.jpg" alt="Emotion"></a>
+                                    <a href="portfolio.html" class="vertical-film-frame snap-center"><img src="Wedding2025-52_websize.jpg" alt="Detail"></a>
                                     <div class="h-5 flex-shrink-0"></div>
                                 </div>
                                 <div class="vertical-film-sprockets-overlay sprockets-right"></div>
@@ -152,11 +157,11 @@
                     <div id="carousel-container" class="flex overflow-x-scroll snap-x snap-mandatory space-x-8 p-8 -mx-4 scroll-smooth items-start pb-16">
                         <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
                             <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Weddings & Engagements</h3>
-                            <div class="carousel-image-container"><img class="carousel-image" src="Wedding2025-82.jpg" alt="Weddings" style="object-position: 50% 25%;"></div>
+                            <div class="carousel-image-container"><img class="carousel-image" src="Wedding2025-82_websize.jpg" alt="Weddings" style="object-position: 50% 25%;"></div>
                         </div>
                         <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
                             <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Maternity, Newborn & Toddlers</h3>
-                            <div class="carousel-image-container"><img class="carousel-image" src="NewbornSession-7.jpg" alt="Maternity"></div>
+                            <div class="carousel-image-container"><img class="carousel-image" src="NewbornSession-7_websize.jpg" alt="Maternity"></div>
                         </div>
                         <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
                             <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Family</h3>
@@ -164,11 +169,11 @@
                         </div>
                         <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
                             <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">School & Sports</h3>
-                            <div class="carousel-image-container"><img class="carousel-image" src="2025-13_websize.jpg" alt="School"></div>
+                            <div class="carousel-image-container"><img class="carousel-image" src="Karate Class 2025-24_websize.jpg" alt="School"></div>
                         </div>
                         <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
                             <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Seniors & Graduation</h3>
-                            <div class="carousel-image-container"><img class="carousel-image" src="SeniorPics2025-27.jpg" alt="Seniors"></div>
+                            <div class="carousel-image-container"><img class="carousel-image" src="SeniorPics2025-27_websize.jpg" alt="Seniors"></div>
                         </div>
                         <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
                             <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Headshots</h3>
@@ -189,12 +194,12 @@
             <div class="film-strip-body">
                 <div class="film-sprockets-overlay sprockets-top"></div>
                 <div id="film-carousel" class="film-frame-container snap-x snap-mandatory">
-                    <a href="portfolio.html" class="film-frame snap-center"><img src="wedding.jpg" alt="Wedding Couple"></a>
-                    <a href="portfolio.html" class="film-frame snap-center"><img src="engagement.jpg" alt="Engagement Detail"></a>
-                    <a href="portfolio.html" class="film-frame snap-center"><img src="maternity.jpg" alt="Maternity Fun"></a>
-                    <a href="portfolio.html" class="film-frame snap-center"><img src="treefarm.jpg" alt="Family Tree Farm"></a>
-                    <a href="portfolio.html" class="film-frame snap-center"><img src="grayce.jpg" alt="Senior Portrait"></a>
-                    <a href="portfolio.html" class="film-frame snap-center"><img src="cheerleaders.jpg" alt="Cheerleaders"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="Wedding2025-78_websize.jpg" alt="Wedding Couple"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="EngagementShoot1-31_websize.jpg" alt="Engagement Detail"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="NewbornSession-7_websize.jpg" alt="Maternity Fun"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="Christmas2-6_websize.jpg" alt="Family Tree Farm"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="SeniorPics2025-64_websize.jpg" alt="Senior Portrait"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="Karate Class 2025-100_websize.jpg" alt="Karate"></a>
                     <div class="w-5 flex-shrink-0"></div>
                 </div>
                 <div class="film-sprockets-overlay sprockets-bottom"></div>
