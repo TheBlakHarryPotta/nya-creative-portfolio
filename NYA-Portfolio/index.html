@@ -3,162 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - NYA Creative Studios</title>
+    <title>NYA Creative Studios - Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Italiana&family=Pinyon+Script&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-accent: #544B3D; --dark-bg: #1A1A1A; --cream-bg: #F9F8F4; --text-dark: #1C1C1C; --gold-accent: #D4AF37; }
+        :root { --primary-accent: #544B3D; --dark-bg: #1A1A1A; --cream-bg: #F9F8F4; --gold-accent: #D4AF37; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--dark-bg); color: white; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1C1C1C; margin: 0; padding: 0; }
         h1, h2, h3, h4 { font-family: 'Italiana', serif; }
         .font-cinzel { font-family: 'Cinzel', serif; }
-        .nav-double-border { position: relative; }
-        .nav-double-border::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; border-top: 1px solid rgba(197, 179, 88, 0.5); border-bottom: 1px solid rgba(197, 179, 88, 0.5); }
-        .portfolio-hero { height: 60vh; background-position: center; background-size: cover; position: relative; }
-        #carousel-container::-webkit-scrollbar { display: none; }
-        #carousel-container { -ms-overflow-style: none; scrollbar-width: none; }
-        .carousel-slide { flex: 0 0 auto; width: 220px; display: flex; flex-direction: column; align-items: center; cursor: pointer; opacity: 0.6; transition: all 0.3s; }
-        .carousel-slide:hover, .carousel-slide.active { opacity: 1; transform: translateY(-5px); }
-        .carousel-image-container { width: 180px; height: 180px; border-radius: 50%; overflow: hidden; margin-top: 0.5rem; transition: transform 0.5s ease, box-shadow 0.5s ease; border: 2px solid var(--gold-accent); }
-        .carousel-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
-        .carousel-slide.active .carousel-image-container { box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); border-color: #fff; }
-        .carousel-slide:hover .carousel-image { transform: scale(1.1); }
-        .gallery-item { transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out; margin-bottom: 1.5rem; break-inside: avoid; }
-        .gallery-item.hidden { display: none; }
-        .masonry-grid { column-count: 1; column-gap: 1.5rem; }
-        @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
-        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+        .signature-font { font-family: 'Pinyon Script', cursive; }
+        .btn-luxury { background-color: #000000; color: white; transition: all 0.4s ease; border: 1px solid #000000; }
+        .btn-luxury:hover { background-color: #000000; color: var(--gold-accent); border-color: var(--gold-accent); transform: translateY(-1px); }
         .btn-inquire { background-color: #ffffff; color: var(--gold-accent); border: 1px solid #ffffff; transition: all 0.4s ease; }
         .btn-inquire:hover { background-color: #000000; color: var(--gold-accent); border-color: var(--gold-accent); transform: translateY(-1px); }
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.95); justify-content: center; align-items: center; }
-        .modal-content { max-width: 90%; max-height: 90vh; box-shadow: 0 0 20px rgba(0,0,0,0.5); border: 1px solid var(--gold-accent); }
-        .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
+        .fancy-gold-border { box-shadow: inset 0 0 20px rgba(0,0,0,0.5), inset 0 0 0 8px var(--gold-accent), 0 0 15px rgba(0,0,0,0.7), 0 0 0 2px #e6d89f, 0 0 0 12px var(--gold-accent), 0 0 0 14px #a39143, 0 25px 50px -12px rgba(0, 0, 0, 0.5); border-radius: 2px; }
+        .thin-gold-border { border: 1px solid var(--gold-accent); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .section-double-border { position: relative; }
+        .section-double-border::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background-color: #C5B358; z-index: 30; pointer-events: none; }
+        .section-double-border::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background-color: #C5B358; z-index: 30; pointer-events: none; }
+        .nav-double-border { position: relative; }
+        .nav-double-border::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; border-top: 1px solid rgba(197, 179, 88, 0.5); border-bottom: 1px solid rgba(197, 179, 88, 0.5); }
+        .parallax-section { background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; height: 100vh; min-height: 600px; position: relative; z-index: 0; display: flex; align-items: center; justify-content: center; }
+        @media (hover: none) { .parallax-section { background-attachment: scroll; } }
+        .content-panel { position: relative; z-index: 10; width: 100%; }
+        
+        /* Carousel */
+        #carousel-container::-webkit-scrollbar, .vertical-film-frame-container::-webkit-scrollbar, .film-frame-container::-webkit-scrollbar { display: none; }
+        .carousel-slide { flex: 0 0 auto; width: 85vw; max-width: 300px; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+        .carousel-image-container { width: 280px; height: 280px; border-radius: 50%; overflow: hidden; margin-top: 1.5rem; transition: transform 0.5s ease; border: 1px solid var(--gold-accent); }
+        .carousel-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .carousel-slide:hover .carousel-image-container { transform: translateY(-10px); box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15); }
+        .carousel-slide:hover .carousel-image { transform: scale(1.1); }
+
+        /* Film Strips */
+        .vertical-film-strip-container { width: 100%; max-width: 400px; height: 600px; background-color: var(--dark-bg); position: relative; overflow: hidden; }
+        .vertical-film-strip-body { background-color: #ffffff; padding: 0 30px; position: relative; height: 100%; width: 100%; display: flex; justify-content: center; }
+        .vertical-film-sprockets-overlay { position: absolute; top: 0; height: 100%; width: 20px; background-image: linear-gradient(to bottom, #000000 60%, transparent 60%); background-size: 100% 30px; pointer-events: none; z-index: 20; }
+        .sprockets-left { left: 5px; } .sprockets-right { right: 5px; } 
+        .vertical-film-frame-container { display: flex; flex-direction: column; overflow-y: scroll; scroll-behavior: smooth; padding: 20px 0; height: 100%; background-color: #ffffff; }
+        .vertical-film-frame { flex: 0 0 auto; width: 100%; height: 235px; margin-bottom: 20px; background-color: #000; border: 1px solid #000; border-radius: 2px; display: block; overflow: hidden; }
+        .vertical-film-frame img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: all 0.5s ease; }
+        .vertical-film-frame:hover img { filter: grayscale(0%); }
+        .film-strip-section { background-color: var(--dark-bg); padding: 60px 0; position: relative; overflow: hidden; display: flex; justify-content: center; }
+        .film-strip-body { background-color: #ffffff; padding: 0; border-top: 30px solid #000000; border-bottom: 30px solid #000000; position: relative; width: 100%; display: flex; align-items: center; }
+        .film-sprockets-overlay { position: absolute; left: 0; width: 100%; height: 18px; background-image: linear-gradient(to right, #ffffff 55%, transparent 55%); background-size: 28px 100%; pointer-events: none; z-index: 20; }
+        .sprockets-top { top: -24px; } .sprockets-bottom { bottom: -24px; } 
+        .film-frame-container { display: flex; overflow-x: scroll; scroll-behavior: smooth; padding: 15px 20px; width: 100%; background-color: #000; }
+        .film-frame { flex: 0 0 auto; width: 350px; min-width: 350px; height: 235px; margin-right: 15px; background-color: #000; border: 1px solid #000; border-radius: 2px; display: block; overflow: hidden; }
+        .film-frame img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: all 0.5s ease; }
+        .film-frame:hover img { filter: grayscale(0%); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <header class="absolute top-0 w-full z-50 nav-double-border transition-all duration-300" style="background-color: #1A1A1A;">
+    <header class="relative top-0 w-full z-50 nav-double-border transition-all duration-300" style="background-color: #1A1A1A;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-32">
                 <nav class="flex-1 flex justify-start space-x-8 md:space-x-12">
-                    <a href="index.html" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#C5B358] transition duration-300">Home</a>
-                    <a href="about.html" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#C5B358] transition duration-300">About</a>
-                </nav>
-                <div class="flex-shrink-0 flex items-center justify-center">
-                    <a href="index.html" class="flex items-center"><img src="NCS_LOGO@2x.png" alt="NYA Creative Studios" class="h-24 w-auto"></a>
-                </div>
-                <nav class="flex-1 flex justify-end space-x-8 md:space-x-12">
-                    <a href="portfolio.html" class="text-[11px] uppercase tracking-[0.15em] font-medium text-[#C5B358] transition duration-300">Portfolio</a>
-                    <a href="index.html#contact" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#C5B358] transition duration-300">Contact</a>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <main class="flex-grow pt-32">
-        <section class="portfolio-hero flex items-end justify-center pb-16" style="background-image: url('EngagementShoot1-30.jpg');">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-black/30"></div>
-            <div class="relative z-10 text-center">
-                <h1 class="text-5xl md:text-7xl text-white mb-6 drop-shadow-lg">The Portfolio</h1>
-                <a href="index.html#contact" class="inline-block btn-inquire px-10 py-3 text-[11px] uppercase tracking-[0.25em]">Contact Me</a>
-            </div>
-        </section>
-
-        <section class="py-12 px-4 sm:px-6 lg:px-8" style="background-color: var(--dark-bg);">
-            <div class="text-center mb-10">
-                <p class="text-[#C5B358] text-xs tracking-[0.25em] uppercase">Filter by Category</p>
-            </div>
-
-            <div class="relative max-w-7xl mx-auto mb-16 border-b border-gray-800 pb-12">
-                <div id="carousel-container" class="flex overflow-x-scroll snap-x snap-mandatory space-x-8 p-4 scroll-smooth items-start justify-start md:justify-center">
-                    <div class="carousel-slide group active" onclick="filterGallery('all', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">View All</h3>
-                        <div class="carousel-image-container"><div class="w-full h-full bg-gray-800 flex items-center justify-center text-[#C5B358]">All</div></div>
-                    </div>
-                    <div class="carousel-slide group" onclick="filterGallery('weddings', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Weddings</h3>
-                        <div class="carousel-image-container"><img class="carousel-image" src="Wedding2025-82.jpg" alt="Weddings"></div>
-                    </div>
-                    <div class="carousel-slide group" onclick="filterGallery('seniors', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Seniors</h3>
-                        <div class="carousel-image-container"><img class="carousel-image" src="SeniorPics2025-27.jpg" alt="Seniors"></div>
-                    </div>
-                    <div class="carousel-slide group" onclick="filterGallery('school', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">School & Sports</h3>
-                        <div class="carousel-image-container"><img class="carousel-image" src="2025-13_websize.jpg" alt="School"></div>
-                    </div>
-                    <div class="carousel-slide group" onclick="filterGallery('maternity', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Maternity</h3>
-                        <div class="carousel-image-container"><img class="carousel-image" src="NewbornSession-7.jpg" alt="Maternity"></div>
-                    </div>
-                    <div class="carousel-slide group" onclick="filterGallery('family', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Family</h3>
-                        <div class="carousel-image-container"><img class="carousel-image" src="Family Session 2025-19.jpg" alt="Family"></div>
-                    </div>
-                    <div class="carousel-slide group" onclick="filterGallery('branding', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Branding</h3>
-                        <div class="carousel-image-container"><img class="carousel-image" src="40thBday-17.jpg" alt="Branding"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="gallery-grid" class="masonry-grid max-w-7xl mx-auto"></div>
-            <div id="empty-message" class="hidden text-center py-20"><p class="text-gray-500 uppercase tracking-widest">No images in this category yet.</p></div>
-        </section>
-    </main>
-
-    <footer class="bg-black text-gray-500 py-12 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto px-4 text-center"><p class="text-[10px] tracking-[0.2em] uppercase">&copy; 2025 NYA Creative Studios</p></div>
-    </footer>
-
-    <div id="lightbox" class="modal" onclick="closeModal()"><span class="close-btn">&times;</span><img class="modal-content" id="lightbox-img"></div>
-
-    <script>
-        const portfolioData = [
-            // WEDDINGS
-            { src: "Wedding2025-78_websize.jpg", category: "weddings" }, { src: "Wedding2025-24_websize.jpg", category: "weddings" }, { src: "Wedding2025-96_websize.jpg", category: "weddings" }, { src: "Wedding2025-82_websize.jpg", category: "weddings" }, { src: "Wedding2025-22_websize.jpg", category: "weddings" }, { src: "Wedding2025-35_websize.jpg", category: "weddings" }, { src: "Wedding2025-118_websize.jpg", category: "weddings" }, { src: "Wedding2025-84_websize.jpg", category: "weddings" }, { src: "Wedding2025-48_websize.jpg", category: "weddings" }, { src: "Wedding2025-107_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-33_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-52_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-31_websize.jpg", category: "weddings" }, { src: "Wedding2025-18_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-47_websize.jpg", category: "weddings" }, { src: "Wedding2025-12_websize.jpg", category: "weddings" }, { src: "Wedding2025-8_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-51_websize.jpg", category: "weddings" }, { src: "Wedding2025-10_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-25_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-6_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-5_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-20_websize.jpg", category: "weddings" }, { src: "Wedding4_websize.jpg", category: "weddings" }, { src: "Wedding7_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-16_websize.jpg", category: "weddings" }, { src: "Wedding48_websize.jpg", category: "weddings" }, { src: "Wedding20_websize.jpg", category: "weddings" }, { src: "Wedding3_websize.jpg", category: "weddings" }, { src: "Wedding52_websize.jpg", category: "weddings" }, { src: "Wedding81_websize.jpg", category: "weddings" }, { src: "Wedding92_websize.jpg", category: "weddings" }, { src: "Wedding93_websize.jpg", category: "weddings" }, { src: "Wedding79_websize.jpg", category: "weddings" }, { src: "Wedding67_websize.jpg", category: "weddings" }, { src: "Wedding57_websize.jpg", category: "weddings" }, { src: "Wedding103_websize.jpg", category: "weddings" }, { src: "Wedding54_websize.jpg", category: "weddings" }, { src: "Wedding102_websize.jpg", category: "weddings" },
-            // SENIORS
-            { src: "SeniorPics2025-27_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-73_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-19_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-31_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-32_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-54_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-40_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-62_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-64_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-53_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-17_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-6_websize.jpg", category: "seniors" }, { src: "Grayce-70_websize.jpg", category: "seniors" }, { src: "Grayce-66_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-9_websize.jpg", category: "seniors" }, { src: "Grayce-39_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-15_websize.jpg", category: "seniors" }, { src: "Grayce-52_websize.jpg", category: "seniors" }, { src: "Grayce-78_websize.jpg", category: "seniors" }, { src: "Grayce-51_websize.jpg", category: "seniors" }, { src: "2025-18_websize.jpg", category: "seniors" }, { src: "2025-25_websize.jpg", category: "seniors" }, { src: "2025-11_websize.jpg", category: "seniors" }, { src: "2025-69_websize.jpg", category: "seniors" }, { src: "2025-54_websize.jpg", category: "seniors" }, { src: "2025-35_websize.jpg", category: "seniors" }, { src: "2025-74_websize.jpg", category: "seniors" }, { src: "2025-70_websize.jpg", category: "seniors" }, { src: "2025-45_websize.jpg", category: "seniors" }, { src: "Grayce-26_websize.jpg", category: "seniors" }, { src: "Grayce-27_websize.jpg", category: "seniors" }, { src: "Grayce-31_websize.jpg", category: "seniors" }, { src: "Grayce-40_websize.jpg", category: "seniors" }, { src: "Grayce-5_websize.jpg", category: "seniors" }, { src: "Grayce-7_websize.jpg", category: "seniors" }, { src: "Grayce-12_websize.jpg", category: "seniors" }, { src: "Grayce-19_websize.jpg", category: "seniors" }, { src: "Grayce-24_websize.jpg", category: "seniors" },
-            // MATERNITY
-            { src: "Maternity Session 2025-11_websize.jpg", category: "maternity" }, { src: "Newborn2025-24_websize.jpg", category: "maternity" }, { src: "Newborn2025-9_websize.jpg", category: "maternity" }, { src: "Newborn2025-19_websize.jpg", category: "maternity" }, { src: "Maternity Session 2025-8_websize.jpg", category: "maternity" }, { src: "Newborn2025-21_websize.jpg", category: "maternity" }, { src: "Newborn2025-16_websize.jpg", category: "maternity" }, { src: "Newborn2025-17_websize.jpg", category: "maternity" }, { src: "Maternity Session 2025-14_websize.jpg", category: "maternity" }, { src: "NewbornSession-7_websize.jpg", category: "maternity" }, { src: "NewbornSession-6_websize.jpg", category: "maternity" }, { src: "NewbornSession-4_websize.jpg", category: "maternity" }, { src: "NewbornSession-2_websize.jpg", category: "maternity" }, { src: "NewbornSession-7.jpg", category: "maternity" },
-            // FAMILY
-            { src: "Shyanne's Session-33_websize.jpg", category: "family" }, { src: "Christmas-10_websize.jpg", category: "family" }, { src: "Christmas2-2_websize.jpg", category: "family" }, { src: "Christmas2-12_websize.jpg", category: "family" }, { src: "Christmas2-16_websize.jpg", category: "family" }, { src: "Shyanne's Session-A_websize.jpg", category: "family" }, { src: "Christmas2-6_websize.jpg", category: "family" }, { src: "Christmas-34_websize.jpg", category: "family" }, { src: "Shyanne's Session-55_websize.jpg", category: "family" }, { src: "Shyanne's Session-52_websize.jpg", category: "family" }, { src: "Christmas-21_websize.jpg", category: "family" }, { src: "Shyanne's Session-3_websize.jpg", category: "family" }, { src: "Christmas-9_websize.jpg", category: "family" }, { src: "Christmas-41_websize.jpg", category: "family" }, { src: "Shyanne's Session-20_websize.jpg", category: "family" }, { src: "Family Session 2025-19.jpg", category: "family" },
-            // BRANDING
-            { src: "DogChristmas-46_websize.jpg", category: "branding" }, { src: "DogChristmas-26_websize.jpg", category: "branding" }, { src: "DogChristmas-94_websize.jpg", category: "branding" }, { src: "DogChristmas-4_websize.jpg", category: "branding" }, { src: "DogChristmas-8_websize.jpg", category: "branding" }, { src: "Birthday-29_websize.jpg", category: "branding" }, { src: "Birthday-21_websize.jpg", category: "branding" }, { src: "Birthday-8_websize.jpg", category: "branding" }, { src: "Birthday-19_websize.jpg", category: "branding" }, { src: "Birthday-48_websize.jpg", category: "branding" }, { src: "40thBday-23_websize.jpg", category: "branding" }, { src: "40thBday-226_websize.jpg", category: "branding" }, { src: "40thBday-16_websize.jpg", category: "branding" }, { src: "40thBday-13_websize.jpg", category: "branding" }, { src: "40thBday-207_websize.jpg", category: "branding" }, { src: "40thBday-57_websize.jpg", category: "branding" }, { src: "40thBday-229_websize.jpg", category: "branding" }, { src: "40thBday-137_websize.jpg", category: "branding" }, { src: "40thBday-17.jpg", category: "branding" }, { src: "Art%20Sale88_websize.jpg", category: "branding" }, { src: "Art%20Sale37_websize.jpg", category: "branding" }, { src: "Art%20Sale15_websize-2.jpg", category: "branding" }, { src: "Art%20Sale16_websize.jpg", category: "branding" }, { src: "Art%20Sale67_websize.jpg", category: "branding" }, { src: "Art%20Sale22_websize.jpg", category: "branding" }, { src: "Art%20Sale58_websize.jpg", category: "branding" }, { src: "Art%20Sale50_websize.jpg", category: "branding" }, { src: "Art%20Sale105_websize.jpg", category: "branding" }, { src: "Art%20Sale32_websize.jpg", category: "branding" }, { src: "Art%20Sale15_websize.jpg", category: "branding" }, { src: "Art%20Sale13_websize.jpg", category: "branding" }, { src: "Art%20Sale3_websize.jpg", category: "branding" }, { src: "HouseHues-20_websize.jpg", category: "branding" }, { src: "HouseHues-15_websize.jpg", category: "branding" }, { src: "HouseHues-6_websize.jpg", category: "branding" }, { src: "HouseHues-4_websize.jpg", category: "branding" }, { src: "HouseHues-14_websize.jpg", category: "branding" }, { src: "HouseHues-11_websize.jpg", category: "branding" }, { src: "HouseHues-16_websize.jpg", category: "branding" }, { src: "HouseHues-12_websize.jpg", category: "branding" }, { src: "HouseHues-40_websize.jpg", category: "branding" }, { src: "HouseHues-13_websize.jpg", category: "branding" }, { src: "HH-2_websize.jpg", category: "branding" }, { src: "HH-39_websize.jpg", category: "branding" }, { src: "HH-40_websize.jpg", category: "branding" }, { src: "HH-34_websize.jpg", category: "branding" }, { src: "HH-33_websize.jpg", category: "branding" }, { src: "HH-48_websize.jpg", category: "branding" }, { src: "HH-18_websize.jpg", category: "branding" }, { src: "HH-10_websize.jpg", category: "branding" }, { src: "HH-9_websize.jpg", category: "branding" }, { src: "HH-6.jpg", category: "branding" },
-            // SCHOOL & SPORTS
-            { src: "Sports2025-18_websize.jpg", category: "school" }, { src: "Sports2025-27_websize.jpg", category: "school" }, { src: "Sports2025-103_websize.jpg", category: "school" }, { src: "Sports2025-70_websize.jpg", category: "school" }, { src: "Sports2025-14_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-277_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-275_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-206_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-158_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-307_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-203_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-122_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-109_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-253_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-299_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-65_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-19_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-160_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-197_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-244_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-167_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-71_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-25_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-226_websize.jpg", category: "school" }, { src: "QuakerValleyHighSchoolFootball-233_websize.jpg", category: "school" }, { src: "Karate%20Class%202025-9_websize.jpg", category: "school" }, { src: "Karate%20Class%202025-24_websize.jpg", category: "school" }, { src: "Karate%20Class%202025-52_websize.jpg", category: "school" }, { src: "Karate%20Class%202025-5_websize.jpg", category: "school" }, { src: "Karate%20Class%202025-62_websize.jpg", category: "school" }, { src: "Karate%20Class%202025-100_websize.jpg", category: "school" }, { src: "Karate%20Class%202025-26_websize.jpg", category: "school" }, { src: "Karate%20Class%202025-30_websize.jpg", category: "school" }, { src: "2025-13_websize.jpg", category: "school" }, { src: "2025-23_websize.jpg", category: "school" }, { src: "2025-8_websize.jpg", category: "school" }, { src: "2025-12_websize.jpg", category: "school" }, { src: "2025-21_websize.jpg", category: "school" }, { src: "2025-14_websize.jpg", category: "school" }, { src: "2025-22_websize.jpg", category: "school" }, { src: "QV2025%202.jpg", category: "school" } 
-        ];
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const grid = document.getElementById('gallery-grid');
-            portfolioData.forEach(img => {
-                const div = document.createElement('div');
-                div.className = `gallery-item ${img.category} group relative cursor-pointer`;
-                div.onclick = () => openModal(img.src);
-                div.innerHTML = `<div class="overflow-hidden border border-transparent group-hover:border-[#D4AF37] transition-all duration-300"><img src="${img.src}" alt="${img.category} photography" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-700" loading="lazy"></div>`;
-                grid.appendChild(div);
-            });
-        });
-
-        function filterGallery(category, btn) {
-            const slides = document.querySelectorAll('.carousel-slide');
-            slides.forEach(s => s.classList.remove('active'));
-            btn.classList.add('active');
-            const items = document.querySelectorAll('.gallery-item');
-            let visibleCount = 0;
-            items.forEach(item => {
-                if (category === 'all') { item.classList.remove('hidden'); visibleCount++; }
-                else { if (item.classList.contains(category)) { item.classList.remove('hidden'); visibleCount++; } else { item.classList.add('hidden'); } }
-            });
-            const emptyMsg = document.getElementById('empty-message');
-            if (visibleCount === 0) { emptyMsg.classList.remove('hidden'); } else { emptyMsg.classList.add('hidden'); }
-        }
-
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        function openModal(src) { event.stopPropagation(); lightbox.style.display = "flex"; lightboxImg.src = src; document.body.style.overflow = 'hidden'; }
-        function closeModal() { lightbox.style.display = "none"; document.body.style.overflow = 'auto'; }
-        document.addEventListener('keydown', function(e) { if (e.key === "Escape" && lightbox.style.display === "flex") { closeModal(); } });
-    </script>
-</body>
-</html>
+                    <a href="about.html" class="text-[11px]
