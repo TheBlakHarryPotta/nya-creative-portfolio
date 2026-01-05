@@ -3,169 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - NYA Creative Studios</title>
+    <title>NYA Creative Studios - Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Italiana&family=Pinyon+Script&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-accent: #544B3D; --dark-bg: #1A1A1A; --cream-bg: #F9F8F4; --text-dark: #1C1C1C; --gold-accent: #D4AF37; }
+        :root { --primary-accent: #544B3D; --dark-bg: #1A1A1A; --cream-bg: #F9F8F4; --beige-bg: #F2EBE5; --text-dark: #1C1C1C; --gold-accent: #D4AF37; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--dark-bg); color: white; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1C1C1C; margin: 0; padding: 0; }
         h1, h2, h3, h4 { font-family: 'Italiana', serif; }
         .font-cinzel { font-family: 'Cinzel', serif; }
-        .nav-double-border { position: relative; }
-        .nav-double-border::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; border-top: 1px solid rgba(197, 179, 88, 0.5); border-bottom: 1px solid rgba(197, 179, 88, 0.5); }
-        .portfolio-hero { height: 60vh; background-position: center; background-size: cover; position: relative; }
-        #carousel-container::-webkit-scrollbar { display: none; }
-        #carousel-container { -ms-overflow-style: none; scrollbar-width: none; }
-        .carousel-slide { flex: 0 0 auto; width: 220px; display: flex; flex-direction: column; align-items: center; cursor: pointer; opacity: 0.6; transition: all 0.3s; }
-        .carousel-slide:hover, .carousel-slide.active { opacity: 1; transform: translateY(-5px); }
-        .carousel-image-container { width: 180px; height: 180px; border-radius: 50%; overflow: hidden; margin-top: 0.5rem; transition: transform 0.5s ease, box-shadow 0.5s ease; border: 2px solid var(--gold-accent); }
-        .carousel-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
-        .carousel-slide.active .carousel-image-container { box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); border-color: #fff; }
-        .carousel-slide:hover .carousel-image { transform: scale(1.1); }
-        .gallery-item { transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out; margin-bottom: 1.5rem; break-inside: avoid; }
-        .gallery-item.hidden { display: none; }
-        .masonry-grid { column-count: 1; column-gap: 1.5rem; }
-        @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
-        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+        .signature-font { font-family: 'Pinyon Script', cursive; }
+        .btn-luxury { background-color: #000000; color: white; transition: all 0.4s ease; border: 1px solid #000000; }
+        .btn-luxury:hover { background-color: #000000; color: var(--gold-accent); border-color: var(--gold-accent); transform: translateY(-1px); }
         .btn-inquire { background-color: #ffffff; color: var(--gold-accent); border: 1px solid #ffffff; transition: all 0.4s ease; }
         .btn-inquire:hover { background-color: #000000; color: var(--gold-accent); border-color: var(--gold-accent); transform: translateY(-1px); }
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.95); justify-content: center; align-items: center; }
-        .modal-content { max-width: 90%; max-height: 90vh; box-shadow: 0 0 20px rgba(0,0,0,0.5); border: 1px solid var(--gold-accent); }
-        .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
+        .fancy-gold-border { box-shadow: inset 0 0 20px rgba(0,0,0,0.5), inset 0 0 0 8px var(--gold-accent), 0 0 15px rgba(0,0,0,0.7), 0 0 0 2px #e6d89f, 0 0 0 12px var(--gold-accent), 0 0 0 14px #a39143, 0 25px 50px -12px rgba(0, 0, 0, 0.5); border-radius: 2px; }
+        .thin-gold-border { border: 1px solid var(--gold-accent); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .section-double-border { position: relative; }
+        .section-double-border::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background-color: #C5B358; z-index: 30; pointer-events: none; }
+        .section-double-border::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background-color: #C5B358; z-index: 30; pointer-events: none; }
+        .nav-double-border { position: relative; }
+        .nav-double-border::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; border-top: 1px solid rgba(197, 179, 88, 0.5); border-bottom: 1px solid rgba(197, 179, 88, 0.5); }
+        .parallax-section { background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; height: 100vh; min-height: 600px; position: relative; z-index: 0; display: flex; align-items: center; justify-content: center; }
+        @media (hover: none) { .parallax-section { background-attachment: scroll; } }
+        .content-panel { position: relative; z-index: 10; width: 100%; }
+        
+        /* Carousel */
+        #carousel-container::-webkit-scrollbar, .vertical-film-frame-container::-webkit-scrollbar, .film-frame-container::-webkit-scrollbar { display: none; }
+        .carousel-slide { flex: 0 0 auto; width: 85vw; max-width: 300px; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+        .carousel-image-container { width: 280px; height: 280px; border-radius: 50%; overflow: hidden; margin-top: 1.5rem; transition: transform 0.5s ease; border: 1px solid var(--gold-accent); }
+        .carousel-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .carousel-slide:hover .carousel-image-container { transform: translateY(-10px); box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15); }
+        .carousel-slide:hover .carousel-image { transform: scale(1.1); }
+
+        /* Film Strips */
+        .vertical-film-strip-container { width: 350px; max-width: 100%; height: 600px; background-color: var(--dark-bg); position: relative; overflow: hidden; margin: 0 auto; }
+        .vertical-film-strip-body { background-color: #ffffff; padding: 0 25px; position: relative; height: 100%; width: 100%; display: flex; justify-content: center; }
+        .vertical-film-sprockets-overlay { position: absolute; top: 0; height: 100%; width: 20px; background-image: linear-gradient(to bottom, #000000 60%, transparent 60%); background-size: 100% 30px; pointer-events: none; z-index: 20; }
+        .sprockets-left { left: 5px; } .sprockets-right { right: 5px; } 
+        .vertical-film-frame-container { display: flex; flex-direction: column; overflow-y: scroll; scroll-behavior: smooth; padding: 20px 0; height: 100%; width: 100%; background-color: #ffffff; }
+        .vertical-film-frame { flex: 0 0 auto; width: 100%; height: 235px; margin-bottom: 20px; background-color: #000; border: 1px solid #000; border-radius: 2px; display: block; overflow: hidden; }
+        .vertical-film-frame img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: all 0.5s ease; }
+        .vertical-film-frame:hover img { filter: grayscale(0%); }
+        .film-strip-section { background-color: var(--dark-bg); padding: 60px 0; position: relative; overflow: hidden; display: flex; justify-content: center; }
+        .film-strip-body { background-color: #ffffff; padding: 0; border-top: 30px solid #000000; border-bottom: 30px solid #000000; position: relative; width: 100%; display: flex; align-items: center; }
+        .film-sprockets-overlay { position: absolute; left: 0; width: 100%; height: 18px; background-image: linear-gradient(to right, #ffffff 55%, transparent 55%); background-size: 28px 100%; pointer-events: none; z-index: 20; }
+        .sprockets-top { top: -24px; } .sprockets-bottom { bottom: -24px; } 
+        .film-frame-container { display: flex; overflow-x: scroll; scroll-behavior: smooth; padding: 15px 20px; width: 100%; background-color: #000; }
+        .film-frame { flex: 0 0 auto; width: 350px; min-width: 350px; height: 235px; margin-right: 15px; background-color: #000; border: 1px solid #000; border-radius: 2px; display: block; overflow: hidden; }
+        .film-frame img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: all 0.5s ease; }
+        .film-frame:hover img { filter: grayscale(0%); }
+
+        /* Modal */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(26, 26, 26, 0.98); justify-content: center; align-items: center; }
+        .modal-content { margin: auto; display: block; max-width: 90%; max-height: 85vh; border-radius: 1px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: #f1f1f1; font-size: 40px; cursor: pointer; z-index: 2010; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <header class="absolute top-0 w-full z-50 nav-double-border transition-all duration-300" style="background-color: #1A1A1A;">
+    <header class="relative top-0 w-full z-50 nav-double-border transition-all duration-300" style="background-color: #1A1A1A;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-32">
                 <nav class="flex-1 flex justify-start space-x-8 md:space-x-12">
-                    <a href="index.html" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#C5B358] transition duration-300">Home</a>
                     <a href="about.html" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#C5B358] transition duration-300">About</a>
+                    <a href="#services" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#C5B358] transition duration-300">Services</a>
                 </nav>
                 <div class="flex-shrink-0 flex items-center justify-center">
-                    <a href="index.html" class="flex items-center"><img src="NCS_LOGO@2x.png" alt="NYA Creative Studios" class="h-24 w-auto"></a>
+                    <a href="#" class="flex items-center"><img src="NCS_LOGO@2x.png" alt="NYA Creative Studios" class="h-24 w-auto"></a>
                 </div>
                 <nav class="flex-1 flex justify-end space-x-8 md:space-x-12">
-                    <a href="portfolio.html" class="text-[11px] uppercase tracking-[0.15em] font-medium text-[#C5B358] transition duration-300">Portfolio</a>
-                    <a href="index.html#contact" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#C5B358] transition duration-300">Contact</a>
+                    <a href="portfolio.html" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#C5B358] transition duration-300">Portfolio</a>
+                    <a href="#contact" class="text-[11px] uppercase tracking-[0.15em] font-medium text-white hover:text-[#C5B358] transition duration-300">Contact</a>
                 </nav>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow pt-32">
-        <section class="portfolio-hero flex items-end justify-center pb-16" style="background-image: url('EngagementShoot1-30.jpg');">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-black/30"></div>
-            <div class="relative z-10 text-center">
-                <h1 class="text-5xl md:text-7xl text-white mb-6 drop-shadow-lg">The Portfolio</h1>
-                <a href="index.html#contact" class="inline-block btn-inquire px-10 py-3 text-[11px] uppercase tracking-[0.25em]">Contact Me</a>
+    <main class="flex-grow">
+        <section class="parallax-section section-double-border" style="background-image: url('EngagementShoot1-30.jpg');">
+            <div class="absolute inset-0 bg-black/40"></div> 
+            <div class="absolute bottom-10 left-4 md:left-8 z-20 hidden md:block">
+                <p class="text-white text-[11px] uppercase tracking-widest font-medium opacity-90">Photography, Brand Visuals & Digital Strategy (WORLDWIDE)</p>
+            </div>
+            <div class="absolute bottom-10 right-10 md:right-16 z-20 flex items-center space-x-6">
+                <span class="signature-font text-6xl transform translate-y-3 opacity-100 mr-4" style="color: #D4AF37; text-shadow: 1px 1px 0 #000;">Nottya LLC</span>
+                <a href="#contact" class="inline-block btn-inquire px-8 py-3 text-[11px] uppercase tracking-[0.15em]">Inquire Now</a>
             </div>
         </section>
 
-        <section class="py-12 px-4 sm:px-6 lg:px-8" style="background-color: var(--dark-bg);">
-            <div class="text-center mb-10">
-                <p class="text-[#C5B358] text-xs tracking-[0.25em] uppercase">Filter by Category</p>
-            </div>
-
-            <div class="relative max-w-7xl mx-auto mb-16 border-b border-gray-800 pb-12">
-                <div id="carousel-container" class="flex overflow-x-scroll snap-x snap-mandatory space-x-8 p-4 scroll-smooth items-start justify-start md:justify-center">
-                    <div class="carousel-slide group active" onclick="filterGallery('all', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">View All</h3>
-                        <div class="carousel-image-container"><div class="w-full h-full bg-gray-800 flex items-center justify-center text-[#C5B358]">All</div></div>
+        <section class="content-panel section-double-border py-32 md:py-40" style="background-color: var(--cream-bg);">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+                    <div class="flex justify-center md:justify-start">
+                        <div class="vertical-film-strip-container thin-gold-border">
+                            <div class="vertical-film-strip-body">
+                                <div class="vertical-film-sprockets-overlay sprockets-left"></div>
+                                <div class="vertical-film-frame-container snap-y snap-mandatory">
+                                    <a href="portfolio.html" class="vertical-film-frame snap-center"><img src="Wedding2025-34_websize.jpg" alt="Wedding"></a>
+                                    <a href="portfolio.html" class="vertical-film-frame snap-center"><img src="Wedding2025-11_websize.jpg" alt="Editorial" style="object-position: top;"></a>
+                                    <a href="portfolio.html" class="vertical-film-frame snap-center"><img src="Wedding2025-46_websize.jpg" alt="Emotion"></a>
+                                    <a href="portfolio.html" class="vertical-film-frame snap-center"><img src="Wedding2025-52_websize.jpg" alt="Detail"></a>
+                                    <div class="h-5 flex-shrink-0"></div>
+                                </div>
+                                <div class="vertical-film-sprockets-overlay sprockets-right"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="carousel-slide group" onclick="filterGallery('weddings', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Weddings</h3>
-                        <div class="carousel-image-container"><img class="carousel-image" src="Wedding2025-82_websize.jpg" alt="Weddings"></div>
-                    </div>
-                    <div class="carousel-slide group" onclick="filterGallery('seniors', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Seniors</h3>
-                        <div class="carousel-image-container"><img class="carousel-image" src="SeniorPics2025-27_websize.jpg" alt="Seniors"></div>
-                    </div>
-                    <div class="carousel-slide group" onclick="filterGallery('school', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">School & Sports</h3>
-                        <div class="carousel-image-container"><img class="carousel-image" src="KarateClass2025-24_websize.jpg" alt="School"></div>
-                    </div>
-                    <div class="carousel-slide group" onclick="filterGallery('maternity', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Maternity</h3>
-                        <div class="carousel-image-container"><img class="carousel-image" src="NewbornSession-7_websize.jpg" alt="Maternity"></div>
-                    </div>
-                    <div class="carousel-slide group" onclick="filterGallery('family', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Family</h3>
-                        <div class="carousel-image-container"><img class="carousel-image" src="FamilySession2025-19.jpg" alt="Family"></div>
-                    </div>
-                    <div class="carousel-slide group" onclick="filterGallery('branding', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Branding</h3>
-                        <div class="carousel-image-container"><img class="carousel-image" src="40thBday-17.jpg" alt="Branding"></div>
+                    <div class="text-center md:text-left md:pl-8">
+                        <h2 class="text-3xl md:text-4xl text-[#1c1c1c] leading-tight mb-10 font-normal uppercase tracking-wide">The Beginning of <br>Your Story Preserved <br>For Generations</h2>
+                        <div class="w-full h-px bg-gray-300 mb-10"></div>
+                        <p class="text-gray-600 leading-loose mb-12 font-light text-lg tracking-wide">It's in the unspoken glances, the little moments, the natural rhythm of life—I'm drawn to the beauty that unfolds effortlessly.</p>
+                        <a href="#contact" class="inline-block btn-luxury px-10 py-4 text-[11px] uppercase tracking-[0.25em]">I'd Love To Capture Your Wedding</a>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div id="gallery-grid" class="masonry-grid max-w-7xl mx-auto"></div>
-            <div id="empty-message" class="hidden text-center py-20"><p class="text-gray-500 uppercase tracking-widest">No images in this category yet.</p></div>
+        <section class="parallax-section section-double-border" style="background-image: url('leafkiss.jpg');">
+             <div class="absolute inset-0 bg-black/20"></div>
+        </section>
+
+        <section id="about" class="content-panel section-double-border py-32 md:py-40" style="background-color: var(--beige-bg);">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+                    <div class="flex justify-center md:justify-end order-1">
+                        <div class="w-full max-w-[500px] h-[650px] bg-[#D3D3D3] fancy-gold-border flex items-center justify-center overflow-hidden">
+                             <img src="40thBday-23_websize.jpg" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="order-2 md:pl-8 text-center md:text-left">
+                        <h2 class="text-4xl md:text-5xl text-[#1c1c1c] mb-10 font-normal uppercase leading-snug tracking-wide">We're Not Just Here To Take Pretty Pictures—<br>Though You'll Get Plenty Of Those.</h2>
+                        <p class="text-gray-600 leading-loose mb-8 font-light text-lg tracking-wide">For us, photography is about capturing the real stuff: the big feelings, the quiet moments, and all the in-between magic that makes your story yours.</p>
+                        <div class="mt-8">
+                            <a href="about.html" class="inline-block btn-luxury px-10 py-4 text-[11px] uppercase tracking-[0.25em] relative z-20">Get to Know Nottya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="parallax-section section-double-border" style="background-image: url('weddingkiss.jpg');">
+             <div class="absolute inset-0 bg-black/20"></div>
+        </section>
+
+        <section id="services" class="content-panel section-double-border py-32 md:py-40" style="background-color: var(--dark-bg);">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <span class="text-xs font-bold tracking-[0.3em] text-[#C5B358] uppercase mb-4 block">Offerings</span>
+                    <h2 class="text-4xl md:text-5xl text-white font-normal tracking-wide uppercase">Capturing Every Moment</h2>
+                </div>
+                <div class="relative">
+                    <div id="carousel-container" class="flex overflow-x-scroll snap-x snap-mandatory space-x-8 p-8 -mx-4 scroll-smooth items-start pb-16">
+                        <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Weddings & Engagements</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="Wedding2025-82_websize.jpg" alt="Weddings" style="object-position: 50% 25%;"></div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Maternity, Newborn & Toddlers</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="NewbornSession-7_websize.jpg" alt="Maternity"></div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Family</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="FamilySession2025-19.jpg" alt="Family"></div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">School & Sports</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="KarateClass2025-24_websize.jpg" alt="School"></div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Seniors & Graduation</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="SeniorPics2025-27_websize.jpg" alt="Seniors"></div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Headshots</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="QV2025-22-cleanedup.jpg" alt="Headshots"></div>
+                        </div>
+                        <div class="carousel-slide group snap-center" onclick="window.location.href='portfolio.html'">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-4 group-hover:text-[#C5B358] transition-colors">Branding</h3>
+                            <div class="carousel-image-container"><img class="carousel-image" src="40thBday-17.jpg" alt="Branding"></div>
+                        </div>
+                    </div>
+                    <button id="prev-btn" class="absolute left-8 top-1/2 transform -translate-y-1/2 bg-white/90 p-4 rounded-full shadow-xl hover:bg-black hover:text-white transition duration-300 z-30 hidden md:block"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path></svg></button>
+                    <button id="next-btn" class="absolute right-8 top-1/2 transform -translate-y-1/2 bg-white/90 p-4 rounded-full shadow-xl hover:bg-black hover:text-white transition duration-300 z-30 hidden md:block"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path></svg></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="film-strip" class="film-strip-section section-double-border">
+            <div class="film-strip-body">
+                <div class="film-sprockets-overlay sprockets-top"></div>
+                <div id="film-carousel" class="film-frame-container snap-x snap-mandatory">
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="Wedding2025-78_websize.jpg" alt="Wedding Couple"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="EngagementShoot1-31_websize.jpg" alt="Engagement Detail"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="NewbornSession-7_websize.jpg" alt="Maternity Fun"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="Christmas2-6_websize.jpg" alt="Family Tree Farm"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="SeniorPics2025-64_websize.jpg" alt="Senior Portrait"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="KarateClass2025-100_websize.jpg" alt="Karate"></a>
+                    <a href="portfolio.html" class="film-frame snap-center"><img src="HH-2_websize.jpg" alt="House Hues"></a>
+                    <div class="w-5 flex-shrink-0"></div>
+                </div>
+                <div class="film-sprockets-overlay sprockets-bottom"></div>
+            </div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-0 hover:opacity-100 transition duration-500 z-30">
+                <span class="text-[#C5B358] font-cinzel text-2xl tracking-widest bg-black/80 px-6 py-3 border border-[#C5B358]">View Full Portfolio</span>
+            </div>
+        </section>
+
+        <section id="reviews" class="content-panel section-double-border py-32 md:py-40" style="background-color: #F4F1EA;">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="flex flex-col lg:flex-row gap-16 items-center">
+                    <div class="w-full lg:w-2/3 text-center lg:text-left">
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl text-[#1c1c1c] font-cormorant font-normal uppercase leading-tight tracking-wide mb-8">"Our family and bridal party continue to comment on how <span class="italic">fun and efficient he was.</span>"</h2>
+                    </div>
+                    <div class="w-full lg:w-1/3 flex flex-col items-center lg:items-end text-center lg:text-right">
+                        <p class="text-gray-600 leading-loose mb-8 font-light text-sm md:text-base max-w-md">The photos themselves are breathtaking, to say the least. I wish I could give him 10/5 stars.</p>
+                        <div class="w-full max-w-[300px] aspect-[3/4] relative mb-8 group cursor-pointer">
+                            <div class="absolute inset-0 border border-[#C5B358] translate-x-2 translate-y-2 transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1"></div>
+                            <img src="EngagementShoot1-30.jpg" class="w-full h-full object-cover relative z-10 shadow-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="content-panel section-double-border py-32 md:py-40" style="background-color: var(--dark-bg); color: white;">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl md:text-5xl mb-8 uppercase tracking-wide">Let's Create Together</h2>
+                <div class="w-16 h-px bg-[#C5B358] mx-auto mb-12"></div>
+                <p class="text-xl text-gray-400 font-light mb-12 leading-relaxed">Available for commissions worldwide.</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="mailto:gradygill@nottya.com" class="inline-flex justify-center items-center px-10 py-4 border border-[#C5B358] bg-[#C5B358] text-[#1A1A1A] text-[11px] font-medium hover:bg-transparent hover:text-[#C5B358] transition duration-300 uppercase tracking-[0.25em]">Send an Email</a>
+                    <a href="tel:+17248886710" class="inline-flex justify-center items-center px-10 py-4 border border-gray-700 bg-transparent text-[11px] font-medium text-gray-400 hover:border-[#C5B358] hover:text-[#C5B358] transition duration-300 uppercase tracking-[0.25em]">(724) 888-6710</a>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer class="bg-black text-gray-500 py-12 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto px-4 text-center"><p class="text-[10px] tracking-[0.2em] uppercase">&copy; 2025 NYA Creative Studios</p></div>
+    <footer class="bg-black text-gray-500 py-12 section-double-border relative z-20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-[10px] tracking-[0.2em] uppercase mb-8 md:mb-0">&copy; 2025 NYA Creative Studios</p>
+        </div>
     </footer>
 
-    <div id="lightbox" class="modal" onclick="closeModal()"><span class="close-btn">&times;</span><img class="modal-content" id="lightbox-img"></div>
-
     <script>
-        const portfolioData = [
-            // WEDDINGS (Files with no spaces)
-            { src: "Wedding2025-78_websize.jpg", category: "weddings" }, { src: "Wedding2025-24_websize.jpg", category: "weddings" }, { src: "Wedding2025-96_websize.jpg", category: "weddings" }, { src: "Wedding2025-82_websize.jpg", category: "weddings" }, { src: "Wedding2025-22_websize.jpg", category: "weddings" }, { src: "Wedding2025-35_websize.jpg", category: "weddings" }, { src: "Wedding2025-118_websize.jpg", category: "weddings" }, { src: "Wedding2025-84_websize.jpg", category: "weddings" }, { src: "Wedding2025-48_websize.jpg", category: "weddings" }, { src: "Wedding2025-107_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-33_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-52_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-31_websize.jpg", category: "weddings" }, { src: "Wedding2025-18_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-47_websize.jpg", category: "weddings" }, { src: "Wedding2025-12_websize.jpg", category: "weddings" }, { src: "Wedding2025-8_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-51_websize.jpg", category: "weddings" }, { src: "Wedding2025-10_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-25_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-6_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-5_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-20_websize.jpg", category: "weddings" }, { src: "Wedding4_websize.jpg", category: "weddings" }, { src: "Wedding7_websize.jpg", category: "weddings" }, { src: "EngagementShoot1-16_websize.jpg", category: "weddings" }, { src: "Wedding48_websize.jpg", category: "weddings" }, { src: "Wedding20_websize.jpg", category: "weddings" }, { src: "Wedding3_websize.jpg", category: "weddings" }, { src: "Wedding52_websize.jpg", category: "weddings" }, { src: "Wedding81_websize.jpg", category: "weddings" }, { src: "Wedding92_websize.jpg", category: "weddings" }, { src: "Wedding93_websize.jpg", category: "weddings" }, { src: "Wedding79_websize.jpg", category: "weddings" }, { src: "Wedding67_websize.jpg", category: "weddings" }, { src: "Wedding57_websize.jpg", category: "weddings" }, { src: "Wedding103_websize.jpg", category: "weddings" }, { src: "Wedding54_websize.jpg", category: "weddings" }, { src: "Wedding102_websize.jpg", category: "weddings" }, { src: "Wedding113_websize.jpg", category: "weddings" }, { src: "Wedding114_websize.jpg", category: "weddings" }, { src: "Wedding104_websize.jpg", category: "weddings" },
-            
-            // SENIORS (Already good - no spaces)
-            { src: "SeniorPics2025-27_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-73_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-19_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-31_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-32_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-54_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-40_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-62_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-64_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-53_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-17_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-6_websize.jpg", category: "seniors" }, { src: "Grayce-70_websize.jpg", category: "seniors" }, { src: "Grayce-66_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-9_websize.jpg", category: "seniors" }, { src: "Grayce-39_websize.jpg", category: "seniors" }, { src: "SeniorPics2025-15_websize.jpg", category: "seniors" }, { src: "Grayce-52_websize.jpg", category: "seniors" }, { src: "Grayce-78_websize.jpg", category: "seniors" }, { src: "Grayce-51_websize.jpg", category: "seniors" }, { src: "Grayce-26_websize.jpg", category: "seniors" }, { src: "Grayce-27_websize.jpg", category: "seniors" }, { src: "Grayce-31_websize.jpg", category: "seniors" }, { src: "Grayce-40_websize.jpg", category: "seniors" }, { src: "Grayce-5_websize.jpg", category: "seniors" }, { src: "Grayce-7_websize.jpg", category: "seniors" }, { src: "Grayce-12_websize.jpg", category: "seniors" }, { src: "Grayce-19_websize.jpg", category: "seniors" }, { src: "Grayce-24_websize.jpg", category: "seniors" },
-            
-            // MATERNITY & NEWBORN (RENAMED - REMOVED SPACES)
-            { src: "NewbornSession-7_websize.jpg", category: "maternity" }, { src: "NewbornSession-6_websize.jpg", category: "maternity" }, { src: "NewbornSession-4_websize.jpg", category: "maternity" }, { src: "NewbornSession-2_websize.jpg", category: "maternity" }, { src: "MaternitySession2025-14_websize.jpg", category: "maternity" }, { src: "MaternitySession2025-11_websize.jpg", category: "maternity" }, { src: "ShyannesSession-55_websize.jpg", category: "maternity" },
-            
-            // FAMILY (RENAMED - REMOVED SPACES)
-            { src: "FamilySession2025-19.jpg", category: "family" }, { src: "Christmas2-6_websize.jpg", category: "family" }, { src: "Christmas-10_websize.jpg", category: "family" }, { src: "Christmas2-12_websize.jpg", category: "family" }, { src: "Christmas2-2_websize.jpg", category: "family" }, { src: "Christmas2-16_websize.jpg", category: "family" }, { src: "Christmas-34_websize.jpg", category: "family" },
-            
-            // SCHOOL & SPORTS (RENAMED - REMOVED SPACES)
-            { src: "KarateClass2025-52_websize.jpg", category: "school" }, { src: "KarateClass2025-26_websize.jpg", category: "school" }, { src: "KarateClass2025-5_websize.jpg", category: "school" }, { src: "KarateClass2025-9_websize.jpg", category: "school" }, { src: "KarateClass2025-24_websize.jpg", category: "school" }, { src: "KarateClass2025-62_websize.jpg", category: "school" }, { src: "KarateClass2025-100_websize.jpg", category: "school" }, { src: "KarateClass2025-30_websize.jpg", category: "school" }, { src: "2025-13_websize.jpg", category: "school" }, { src: "2025-23_websize.jpg", category: "school" }, { src: "2025-8_websize.jpg", category: "school" }, { src: "2025-12_websize.jpg", category: "school" }, { src: "2025-21_websize.jpg", category: "school" }, { src: "2025-14_websize.jpg", category: "school" }, { src: "2025-22_websize.jpg", category: "school" },
-            
-            // BRANDING (RENAMED - REMOVED SPACES)
-            { src: "40thBday-17.jpg", category: "branding" }, { src: "40thBday-23_websize.jpg", category: "branding" }, 
-            { src: "HH-2_websize.jpg", category: "branding" }, { src: "HH-9_websize.jpg", category: "branding" }, { src: "HH-39_websize.jpg", category: "branding" }, { src: "HH-18_websize.jpg", category: "branding" }, { src: "HouseHues-48_websize.jpg", category: "branding" }, { src: "HH-33_websize.jpg", category: "branding" }, { src: "HH-10_websize.jpg", category: "branding" }, { src: "HH-34_websize.jpg", category: "branding" }, { src: "HH-40_websize.jpg", category: "branding" },
-            { src: "ArtSale2025-2.jpg", category: "branding" }, { src: "ArtSale2025-3.jpg", category: "branding" }, { src: "ArtSale2025-4.jpg", category: "branding" }, { src: "ArtSale2025-5.jpg", category: "branding" }, { src: "ArtSale2025-10.jpg", category: "branding" }, { src: "ArtSale2025-11.jpg", category: "branding" }, { src: "ArtSale3_websize.jpg", category: "branding" }, { src: "ArtSale2025-12.jpg", category: "branding" }
-        ];
-
         document.addEventListener('DOMContentLoaded', () => {
-            const grid = document.getElementById('gallery-grid');
-            portfolioData.forEach(img => {
-                const div = document.createElement('div');
-                div.className = `gallery-item ${img.category} group relative cursor-pointer`;
-                div.onclick = () => openModal(img.src);
-                div.innerHTML = `<div class="overflow-hidden border border-transparent group-hover:border-[#D4AF37] transition-all duration-300"><img src="${img.src}" alt="${img.category} photography" class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-700" loading="lazy"></div>`;
-                grid.appendChild(div);
-            });
+            const container = document.getElementById('carousel-container');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            if (container) {
+                const scrollCarousel = (direction) => {
+                    const slideWidth = container.querySelector('.carousel-slide').offsetWidth;
+                    const scrollAmount = slideWidth + 32;
+                    container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+                };
+                prevBtn.addEventListener('click', () => scrollCarousel(-1));
+                nextBtn.addEventListener('click', () => scrollCarousel(1));
+            }
+            const filmContainer = document.getElementById('film-carousel');
+            let isDown = false, startX, scrollLeft;
+            if(filmContainer) {
+                filmContainer.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - filmContainer.offsetLeft; scrollLeft = filmContainer.scrollLeft; });
+                filmContainer.addEventListener('mouseleave', () => isDown = false);
+                filmContainer.addEventListener('mouseup', () => isDown = false);
+                filmContainer.addEventListener('mousemove', e => { if(!isDown) return; e.preventDefault(); const x = e.pageX - filmContainer.offsetLeft; const walk = (x - startX) * 2; filmContainer.scrollLeft = scrollLeft - walk; });
+            }
         });
-
-        function filterGallery(category, btn) {
-            const slides = document.querySelectorAll('.carousel-slide');
-            slides.forEach(s => s.classList.remove('active'));
-            btn.classList.add('active');
-            const items = document.querySelectorAll('.gallery-item');
-            let visibleCount = 0;
-            items.forEach(item => {
-                if (category === 'all') { item.classList.remove('hidden'); visibleCount++; }
-                else { if (item.classList.contains(category)) { item.classList.remove('hidden'); visibleCount++; } else { item.classList.add('hidden'); } }
-            });
-            const emptyMsg = document.getElementById('empty-message');
-            if (visibleCount === 0) { emptyMsg.classList.remove('hidden'); } else { emptyMsg.classList.add('hidden'); }
-        }
-
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        function openModal(src) { event.stopPropagation(); lightbox.style.display = "flex"; lightboxImg.src = src; document.body.style.overflow = 'hidden'; }
-        function closeModal() { lightbox.style.display = "none"; document.body.style.overflow = 'auto'; }
-        document.addEventListener('keydown', function(e) { if (e.key === "Escape" && lightbox.style.display === "flex") { closeModal(); } });
     </script>
 </body>
 </html>
