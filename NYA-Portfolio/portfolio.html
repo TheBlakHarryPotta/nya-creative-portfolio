@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - NYA Creative Studios</title>
     
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Load Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Italiana&family=Pinyon+Script&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
@@ -37,7 +35,7 @@
 
         /* Hero Image Styling */
         .portfolio-hero {
-            height: 80vh;
+            height: 60vh;
             background-position: center;
             background-size: cover;
             position: relative;
@@ -48,32 +46,41 @@
         #carousel-container { -ms-overflow-style: none; scrollbar-width: none; }
         
         .carousel-slide { 
-            flex: 0 0 auto; width: 220px; display: flex; flex-direction: column; align-items: center; cursor: pointer; opacity: 0.7; transition: opacity 0.3s; 
+            flex: 0 0 auto; width: 140px; display: flex; flex-direction: column; align-items: center; cursor: pointer; opacity: 0.6; transition: all 0.3s; 
         }
-        .carousel-slide:hover, .carousel-slide.active { opacity: 1; }
+        .carousel-slide:hover, .carousel-slide.active { opacity: 1; transform: translateY(-5px); }
         
         .carousel-image-container {
-            width: 180px; height: 180px; border-radius: 50%; overflow: hidden; margin-top: 1rem; 
+            width: 100px; height: 100px; border-radius: 50%; overflow: hidden; margin-top: 0.5rem; 
             transition: transform 0.5s ease, box-shadow 0.5s ease;
             border: 2px solid var(--gold-accent);
         }
         
         .carousel-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
         
-        .carousel-slide:hover .carousel-image-container, .carousel-slide.active .carousel-image-container { 
-            transform: scale(1.05); 
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4); 
+        .carousel-slide.active .carousel-image-container { 
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); 
+            border-color: #fff;
         }
-        .carousel-slide:hover .carousel-image { transform: scale(1.1); }
 
         /* Grid Transitions */
         .gallery-item {
-            display: block;
+            /* display is handled by JS filtering */
             transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+            margin-bottom: 1.5rem;
+            break-inside: avoid;
         }
         .gallery-item.hidden {
-            display: none !important;
+            display: none;
         }
+        
+        /* Masonry Layout for Desktop */
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
 
         /* Buttons */
         .btn-inquire {
@@ -97,7 +104,6 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- Header -->
     <header class="absolute top-0 w-full z-50 nav-double-border transition-all duration-300" style="background-color: #1A1A1A;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-32">
@@ -120,12 +126,9 @@
 
     <main class="flex-grow pt-32">
         
-        <!-- HERO SECTION: Picture of You Holding Camera -->
-        <section class="portfolio-hero flex items-end justify-center pb-16" style="background-image: url('https://placehold.co/1920x1080/1a1a1a/666666?text=Photo+of+You+Holding+Camera');">
-            <!-- Overlay Gradient -->
+        <section class="portfolio-hero flex items-end justify-center pb-16" style="background-image: url('EngagementShoot1-33_websize.jpg');">
             <div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-black/30"></div>
             
-            <!-- Content at Bottom -->
             <div class="relative z-10 text-center">
                 <h1 class="text-5xl md:text-7xl text-white mb-6 drop-shadow-lg">The Portfolio</h1>
                 <a href="index.html#contact" class="inline-block btn-inquire px-10 py-3 text-[11px] uppercase tracking-[0.25em]">
@@ -134,18 +137,15 @@
             </div>
         </section>
 
-        <!-- GALLERY SECTION: Black Background -->
         <section class="py-12 px-4 sm:px-6 lg:px-8" style="background-color: var(--dark-bg);">
             
             <div class="text-center mb-10">
                 <p class="text-[#C5B358] text-xs tracking-[0.25em] uppercase">Filter by Category</p>
             </div>
 
-            <!-- Filter Menu (Horizontal Circle Carousel) -->
             <div class="relative max-w-7xl mx-auto mb-16 border-b border-gray-800 pb-12">
-                <div id="carousel-container" class="flex overflow-x-scroll snap-x snap-mandatory space-x-6 p-4 scroll-smooth items-start justify-start md:justify-center">
+                <div id="carousel-container" class="flex overflow-x-scroll snap-x snap-mandatory space-x-8 p-4 scroll-smooth items-start justify-start md:justify-center">
                     
-                    <!-- All (Reset) -->
                     <div class="carousel-slide group active" onclick="filterGallery('all', this)">
                         <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">View All</h3>
                         <div class="carousel-image-container">
@@ -153,96 +153,53 @@
                         </div>
                     </div>
 
-                    <!-- 1. Weddings -->
                     <div class="carousel-slide group" onclick="filterGallery('weddings', this)">
                         <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Weddings</h3>
                         <div class="carousel-image-container">
-                            <img class="carousel-image" src="Wedding2025-82.jpg" alt="Weddings">
+                            <img class="carousel-image" src="Wedding2025-82_websize.jpg" alt="Weddings">
                         </div>
                     </div>
 
-                    <!-- 2. Maternity -->
+                    <div class="carousel-slide group" onclick="filterGallery('seniors', this)">
+                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Seniors</h3>
+                        <div class="carousel-image-container">
+                            <img class="carousel-image" src="SeniorPics2025-27_websize.jpg" alt="Seniors">
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide group" onclick="filterGallery('school', this)">
+                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">School & Sports</h3>
+                        <div class="carousel-image-container">
+                            <img class="carousel-image" src="QuakerValleyHighSchoolFootball-206_websize.jpg" alt="School">
+                        </div>
+                    </div>
+
                     <div class="carousel-slide group" onclick="filterGallery('maternity', this)">
                         <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Maternity</h3>
                         <div class="carousel-image-container">
-                            <img class="carousel-image" src="NewbornSession-7.jpg" alt="Maternity">
+                            <img class="carousel-image" src="Newborn2025-24_websize.jpg" alt="Maternity">
                         </div>
                     </div>
 
-                    <!-- 3. Family -->
                     <div class="carousel-slide group" onclick="filterGallery('family', this)">
                         <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Family</h3>
                         <div class="carousel-image-container">
-                            <img class="carousel-image" src="Family Session 2025-19.jpg" alt="Family">
+                            <img class="carousel-image" src="Shyanne's Session-33_websize.jpg" alt="Family">
                         </div>
                     </div>
 
-                    <!-- 4. School -->
-                    <div class="carousel-slide group" onclick="filterGallery('school', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">School</h3>
-                        <div class="carousel-image-container">
-                            <img class="carousel-image" src="QV2025 2.jpg" alt="School">
-                        </div>
-                    </div>
-
-                     <!-- 5. Seniors -->
-                     <div class="carousel-slide group" onclick="filterGallery('seniors', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Seniors</h3>
-                        <div class="carousel-image-container">
-                            <img class="carousel-image" src="SeniorPics2025-27.jpg" alt="Seniors">
-                        </div>
-                    </div>
-
-                    <!-- 6. Headshots -->
-                    <div class="carousel-slide group" onclick="filterGallery('headshots', this)">
-                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Headshots</h3>
-                        <div class="carousel-image-container">
-                            <img class="carousel-image" src="QV2025-22-cleanedup.jpg" alt="Headshots">
-                        </div>
-                    </div>
-
-                    <!-- 7. Branding -->
                     <div class="carousel-slide group" onclick="filterGallery('branding', this)">
                         <h3 class="text-[10px] uppercase tracking-[0.2em] text-center font-semibold text-gray-200 mb-2 group-hover:text-[#C5B358] transition-colors">Branding</h3>
                         <div class="carousel-image-container">
-                            <img class="carousel-image" src="40thBday-17.jpg" alt="Branding">
+                            <img class="carousel-image" src="40thBday-23_websize.jpg" alt="Branding">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Gallery Grid -->
-            <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
-                
-                <!-- Sample Images categorized for filtering test -->
-                <div class="gallery-item weddings group relative cursor-pointer" onclick="openModal(this.querySelector('img').src)">
-                    <img src="Wedding2025-11.jpg" alt="Wedding" class="w-full h-[400px] object-cover opacity-90 group-hover:opacity-100 transition duration-500 border border-transparent group-hover:border-[#D4AF37]">
-                </div>
-                <div class="gallery-item weddings group relative cursor-pointer" onclick="openModal(this.querySelector('img').src)">
-                    <img src="Wedding2025-34.jpg" alt="Wedding" class="w-full h-[400px] object-cover opacity-90 group-hover:opacity-100 transition duration-500 border border-transparent group-hover:border-[#D4AF37]">
-                </div>
-                <div class="gallery-item maternity group relative cursor-pointer" onclick="openModal(this.querySelector('img').src)">
-                    <img src="NewbornSession-7.jpg" alt="Maternity" class="w-full h-[400px] object-cover opacity-90 group-hover:opacity-100 transition duration-500 border border-transparent group-hover:border-[#D4AF37]">
-                </div>
-                <div class="gallery-item family group relative cursor-pointer" onclick="openModal(this.querySelector('img').src)">
-                    <img src="Family Session 2025-19.jpg" alt="Family" class="w-full h-[400px] object-cover opacity-90 group-hover:opacity-100 transition duration-500 border border-transparent group-hover:border-[#D4AF37]">
-                </div>
-                 <div class="gallery-item school group relative cursor-pointer" onclick="openModal(this.querySelector('img').src)">
-                    <img src="QV2025 2.jpg" alt="School" class="w-full h-[400px] object-cover opacity-90 group-hover:opacity-100 transition duration-500 border border-transparent group-hover:border-[#D4AF37]">
-                </div>
-                <div class="gallery-item seniors group relative cursor-pointer" onclick="openModal(this.querySelector('img').src)">
-                    <img src="SeniorPics2025-27.jpg" alt="Senior" class="w-full h-[400px] object-cover opacity-90 group-hover:opacity-100 transition duration-500 border border-transparent group-hover:border-[#D4AF37]">
-                </div>
-                <div class="gallery-item headshots group relative cursor-pointer" onclick="openModal(this.querySelector('img').src)">
-                    <img src="QV2025-22-cleanedup.jpg" alt="Headshot" class="w-full h-[400px] object-cover opacity-90 group-hover:opacity-100 transition duration-500 border border-transparent group-hover:border-[#D4AF37]">
-                </div>
-                 <div class="gallery-item branding group relative cursor-pointer" onclick="openModal(this.querySelector('img').src)">
-                    <img src="40thBday-17.jpg" alt="Branding" class="w-full h-[400px] object-cover opacity-90 group-hover:opacity-100 transition duration-500 border border-transparent group-hover:border-[#D4AF37]">
+            <div id="gallery-grid" class="masonry-grid max-w-7xl mx-auto">
                 </div>
 
-            </div>
-
-            <!-- Empty State -->
             <div id="empty-message" class="hidden text-center py-20">
                 <p class="text-gray-500 uppercase tracking-widest">No images in this category yet.</p>
             </div>
@@ -263,6 +220,179 @@
     </div>
 
     <script>
+        // --- 1. IMAGE DATABASE (All your filenames) ---
+        const portfolioData = [
+            // WEDDINGS
+            { src: "Wedding2025-78_websize.jpg", category: "weddings" },
+            { src: "Wedding2025-24_websize.jpg", category: "weddings" },
+            { src: "Wedding2025-96_websize.jpg", category: "weddings" },
+            { src: "Wedding2025-82_websize.jpg", category: "weddings" },
+            { src: "Wedding2025-22_websize.jpg", category: "weddings" },
+            { src: "Wedding2025-35_websize.jpg", category: "weddings" },
+            { src: "Wedding2025-118_websize.jpg", category: "weddings" },
+            { src: "Wedding2025-84_websize.jpg", category: "weddings" },
+            { src: "Wedding2025-48_websize.jpg", category: "weddings" },
+            { src: "Wedding2025-107_websize.jpg", category: "weddings" },
+            { src: "EngagementShoot1-33_websize.jpg", category: "weddings" },
+            { src: "EngagementShoot1-52_websize.jpg", category: "weddings" },
+            { src: "EngagementShoot1-31_websize.jpg", category: "weddings" },
+            { src: "Wedding2025-18_websize.jpg", category: "weddings" },
+            { src: "EngagementShoot1-47_websize.jpg", category: "weddings" },
+            { src: "Wedding2025-12_websize.jpg", category: "weddings" },
+            { src: "Wedding2025-8_websize.jpg", category: "weddings" },
+            { src: "EngagementShoot1-51_websize.jpg", category: "weddings" },
+            { src: "Wedding2025-10_websize.jpg", category: "weddings" },
+            { src: "EngagementShoot1-25_websize.jpg", category: "weddings" },
+            { src: "EngagementShoot1-6_websize.jpg", category: "weddings" },
+            { src: "EngagementShoot1-5_websize.jpg", category: "weddings" },
+            { src: "EngagementShoot1-20_websize.jpg", category: "weddings" },
+            { src: "Wedding4_websize.jpg", category: "weddings" },
+            { src: "Wedding7_websize.jpg", category: "weddings" },
+            { src: "EngagementShoot1-16_websize.jpg", category: "weddings" },
+            { src: "Wedding48_websize.jpg", category: "weddings" },
+            { src: "Wedding20_websize.jpg", category: "weddings" },
+            { src: "Wedding3_websize.jpg", category: "weddings" },
+            { src: "Wedding52_websize.jpg", category: "weddings" },
+            { src: "Wedding81_websize.jpg", category: "weddings" },
+            { src: "Wedding92_websize.jpg", category: "weddings" },
+            { src: "Wedding93_websize.jpg", category: "weddings" },
+            { src: "Wedding79_websize.jpg", category: "weddings" },
+            { src: "Wedding67_websize.jpg", category: "weddings" },
+            { src: "Wedding57_websize.jpg", category: "weddings" },
+            { src: "Wedding103_websize.jpg", category: "weddings" },
+            { src: "Wedding54_websize.jpg", category: "weddings" },
+            { src: "Wedding102_websize.jpg", category: "weddings" },
+
+            // SENIORS
+            { src: "SeniorPics2025-27_websize.jpg", category: "seniors" },
+            { src: "SeniorPics2025-73_websize.jpg", category: "seniors" },
+            { src: "SeniorPics2025-19_websize.jpg", category: "seniors" },
+            { src: "SeniorPics2025-31_websize.jpg", category: "seniors" },
+            { src: "SeniorPics2025-32_websize.jpg", category: "seniors" },
+            { src: "SeniorPics2025-54_websize.jpg", category: "seniors" },
+            { src: "SeniorPics2025-40_websize.jpg", category: "seniors" },
+            { src: "SeniorPics2025-62_websize.jpg", category: "seniors" },
+            { src: "SeniorPics2025-64_websize.jpg", category: "seniors" },
+            { src: "SeniorPics2025-53_websize.jpg", category: "seniors" },
+            { src: "SeniorPics2025-17_websize.jpg", category: "seniors" },
+            { src: "SeniorPics2025-6_websize.jpg", category: "seniors" },
+            { src: "Grayce-70_websize.jpg", category: "seniors" },
+            { src: "Grayce-66_websize.jpg", category: "seniors" },
+            { src: "SeniorPics2025-9_websize.jpg", category: "seniors" },
+            { src: "Grayce-39_websize.jpg", category: "seniors" },
+            { src: "SeniorPics2025-15_websize.jpg", category: "seniors" },
+            { src: "Grayce-52_websize.jpg", category: "seniors" },
+            { src: "Grayce-78_websize.jpg", category: "seniors" },
+            { src: "Grayce-51_websize.jpg", category: "seniors" },
+            { src: "2025-18_websize.jpg", category: "seniors" },
+            { src: "2025-25_websize.jpg", category: "seniors" },
+            { src: "2025-11_websize.jpg", category: "seniors" },
+            { src: "2025-69_websize.jpg", category: "seniors" },
+            { src: "2025-54_websize.jpg", category: "seniors" },
+            { src: "2025-35_websize.jpg", category: "seniors" },
+            { src: "2025-74_websize.jpg", category: "seniors" },
+            { src: "2025-70_websize.jpg", category: "seniors" },
+            { src: "2025-45_websize.jpg", category: "seniors" },
+
+            // MATERNITY
+            { src: "Maternity Session 2025-11_websize.jpg", category: "maternity" },
+            { src: "Newborn2025-24_websize.jpg", category: "maternity" },
+            { src: "Newborn2025-9_websize.jpg", category: "maternity" },
+            { src: "Newborn2025-19_websize.jpg", category: "maternity" },
+            { src: "Maternity Session 2025-8_websize.jpg", category: "maternity" },
+            { src: "Newborn2025-21_websize.jpg", category: "maternity" },
+            { src: "Newborn2025-16_websize.jpg", category: "maternity" },
+            { src: "Newborn2025-17_websize.jpg", category: "maternity" },
+            { src: "Maternity Session 2025-14_websize.jpg", category: "maternity" },
+
+            // FAMILY
+            { src: "Shyanne's Session-33_websize.jpg", category: "family" },
+            { src: "Christmas-10_websize.jpg", category: "family" },
+            { src: "Christmas2-2_websize.jpg", category: "family" },
+            { src: "Christmas2-12_websize.jpg", category: "family" },
+            { src: "Christmas2-16_websize.jpg", category: "family" },
+            { src: "Shyanne's Session-A_websize.jpg", category: "family" },
+            { src: "Christmas2-6_websize.jpg", category: "family" },
+            { src: "Christmas-34_websize.jpg", category: "family" },
+            { src: "Shyanne's Session-55_websize.jpg", category: "family" },
+            { src: "Shyanne's Session-52_websize.jpg", category: "family" },
+            { src: "Christmas-21_websize.jpg", category: "family" },
+            { src: "Shyanne's Session-3_websize.jpg", category: "family" },
+            { src: "Christmas-9_websize.jpg", category: "family" },
+            { src: "Christmas-41_websize.jpg", category: "family" },
+            { src: "Shyanne's Session-20_websize.jpg", category: "family" },
+
+            // BRANDING
+            { src: "DogChristmas-46_websize.jpg", category: "branding" },
+            { src: "DogChristmas-26_websize.jpg", category: "branding" },
+            { src: "DogChristmas-94_websize.jpg", category: "branding" },
+            { src: "DogChristmas-4_websize.jpg", category: "branding" },
+            { src: "DogChristmas-8_websize.jpg", category: "branding" },
+            { src: "Birthday-29_websize.jpg", category: "branding" },
+            { src: "Birthday-21_websize.jpg", category: "branding" },
+            { src: "Birthday-8_websize.jpg", category: "branding" },
+            { src: "Birthday-19_websize.jpg", category: "branding" },
+            { src: "Birthday-48_websize.jpg", category: "branding" },
+            { src: "40thBday-23_websize.jpg", category: "branding" },
+            { src: "40thBday-226_websize.jpg", category: "branding" },
+            { src: "40thBday-16_websize.jpg", category: "branding" },
+            { src: "40thBday-13_websize.jpg", category: "branding" },
+            { src: "40thBday-207_websize.jpg", category: "branding" },
+            { src: "40thBday-57_websize.jpg", category: "branding" },
+            { src: "40thBday-229_websize.jpg", category: "branding" },
+            { src: "40thBday-137_websize.jpg", category: "branding" },
+
+            // SCHOOL & SPORTS
+            { src: "Sports2025-18_websize.jpg", category: "school" },
+            { src: "Sports2025-27_websize.jpg", category: "school" },
+            { src: "Sports2025-103_websize.jpg", category: "school" },
+            { src: "Sports2025-70_websize.jpg", category: "school" },
+            { src: "Sports2025-14_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-277_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-275_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-206_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-158_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-307_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-203_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-122_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-109_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-253_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-299_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-65_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-19_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-160_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-197_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-244_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-167_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-71_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-25_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-226_websize.jpg", category: "school" },
+            { src: "QuakerValleyHighSchoolFootball-233_websize.jpg", category: "school" }
+        ];
+
+        // --- 2. INITIALIZE GALLERY ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('gallery-grid');
+            
+            // Loop through data and create HTML for each image
+            portfolioData.forEach(img => {
+                const div = document.createElement('div');
+                div.className = `gallery-item ${img.category} group relative cursor-pointer`;
+                div.onclick = () => openModal(img.src);
+                
+                div.innerHTML = `
+                    <div class="overflow-hidden border border-transparent group-hover:border-[#D4AF37] transition-all duration-300">
+                        <img src="${img.src}" 
+                             alt="${img.category} photography" 
+                             class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-700"
+                             loading="lazy">
+                    </div>
+                `;
+                grid.appendChild(div);
+            });
+        });
+
+        // --- 3. FILTER LOGIC ---
         function filterGallery(category, btn) {
             // Update active button visually
             const slides = document.querySelectorAll('.carousel-slide');
@@ -294,6 +424,7 @@
             }
         }
 
+        // --- 4. LIGHTBOX LOGIC ---
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
 
